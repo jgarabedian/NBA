@@ -1,0 +1,106 @@
+/* Scrollbar */
+.card-container::-webkit-scrollbar {
+    width: .5em;
+}
+.card-container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+.card-container::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+/* Card Container */
+.container {
+    width: 100%;
+    display: inline-block;
+    max-height: 150vh;
+    max-height: 80vh;
+    overflow: hidden;
+    margin-top: 25px;
+}
+.card-container {
+    width: 48%;
+    padding-left: 1%;
+    padding-right: 1%;
+    float: left;
+    max-height: 78vh;
+    overflow: overlay;
+}
+/* #card-container-right {
+    float: right;
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+} */
+
+/* Style the player card :) */
+.player__card {
+    border: 2px solid gold;
+    display: block;
+    /* width: 50%; */
+    margin-bottom: 25px;
+    margin-right: 25px;
+    margin-left: 0;
+    cursor: pointer;
+}
+
+.player__card__header {
+    width: 100%;
+    display: inline-flex;
+}
+
+.player__card-team, .player__card-name {
+    width: 50%;
+    text-align: center;
+} 
+
+.player__card__content {
+    display: inline-flex;
+    width: 100%;
+}
+
+.player__card__content__left, .player__card__content__left {
+    width: 50%;
+} 
+
+.player__card__content__left i {
+    width: 100%;
+    text-align: center;
+}
+
+.player__card__content__left {
+    text-align: center;
+}
+
+.player__card__content__left .team-logo {
+    height: 150px;
+    margin-top: -30px;
+}
+
+/* Hover effects */
+.player__card:hover {
+    background-color: #464A61;
+    border: 1px dashed gold;
+}
+
+/* Player Compare */
+.player__compare ul {
+    list-style: none;
+}
+
+.player__compare__stats {
+    width: 100%;
+    display: inline-flex;
+    margin-top: 100px;
+}
+
+.player__compare__stats__left, .player__compare__stats__right {
+    width: 25%;
+    text-align: center;
+}
+
+.player__compare__stats__middle {
+    width: 50%;
+    height: 750px;
+}

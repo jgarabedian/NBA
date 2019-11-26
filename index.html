@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>NBA</title>
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest"> -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <noscript>
+        <link rel="stylesheet" href="/assets/css/noscript.css">
+    </noscript>
+
+    <!-- Visualization JS -->
+    <!-- Echarts -->
+    <script src="/assets/js/echarts/echarts.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/nba-api.css">
+    <!-- Custom JS -->
+    <script src="/assets/js/nba-api.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150551765-2"></script> -->
+    <!-- <script src="../assets/js/google.analytics.js"></script> -->
+
+
+
+</head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header"></header>
+
+        <!-- Menu -->
+        <nav id="menu">
+            <ul class="links" id="menu-links"></ul>
+            <ul class="actions stacked">
+                <li><a href="/" class="button primary fit">Get Started</a></li>
+                <!-- <li><a href="#" class="button fit">Log In</a></li> -->
+            </ul>
+        </nav>
+
+        <!-- Main -->
+        <div id="main" class="alt">
+
+            <!-- One -->
+            <section id="one">
+                <div class="inner">
+                    <header class="major">
+                        <h1>NBA API</h1>
+                    </header>
+                    <div class="row gtr-uniform">
+                        <div class="col-4 col-12-small">
+                            <input type="text" name="player-search" id="player-search-field" value=""
+                                placeholder="Anthony Davis">
+                        </div>
+                        <div class="col-2 col-12-small">
+                            <ul class="actions">
+                                <li><input type="submit" value="Search" class="primary" id="playerSearchBtn"></li>
+                            </ul>
+                        </div>
+                        <div class="col-4 col-12-small">
+                            <input type="text" name="player-search-2" id="player-search-field-2" value=""
+                                placeholder="Jrue Holiday">
+                        </div>
+                        <div class="col-2 col-12-small">
+                            <ul class="actions">
+                                <li><input type="submit" value="Search" class="primary" id="playerSearchBtn-2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="card-container" id="card-container"></div>
+                        <div class="card-container" id="card-container-right"></div>
+                    </div>
+                    <div class="player__compare">
+                        <div class="row gtr-uniform">
+                            <div class="col-3 col-12-medium"></div>
+                            <div class="col-6 col-12-medium">
+                                <ul class="actions-fit">
+                                    <li><input type="submit" value="Compare Player Averages" class="button fit disabled"
+                                            id="compare-players"></li>
+                                </ul>
+                            </div>
+                            <div class="col-3 col-12-medium"></div>
+                        </div>
+                        <div class="player__compare__stats">
+                            <div class="player__compare__stats__left">
+                                <h3 id="stats-left-name"></h3>
+                                <ul id="stats-left"></ul>
+                            </div>
+                            <div class="player__compare__stats__middle" id="charts"></div>
+                            <div class="player__compare__stats__left">
+                                <h3 id="stats-right-name"></h3>
+                                <ul id="stats-right"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Contact -->
+        <!-- <section id="contact"></section> -->
+
+        <!-- Footer -->
+        <!-- <footer id="footer"></footer> -->
+
+    </div>
+
+
+
+    <!-- Scripts -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/jquery.scrollex.min.js"></script>
+    <script src="/assets/js/browser.min.js"></script>
+    <script src="/assets/js/breakpoints.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+    <!-- load in components -->
+    <!-- <script src="/assets/js/components/footer.js"></script>
+    <script src="/assets/js/components/header.js"></script>
+    <script src="/assets/js/components/contact.js"></script>
+    <script src="/assets/js/components/menu.js"></script> -->
+    <!-- NBA Charts -->
+    <script src="/assets/js/nbaStats.js"></script>
+
+    <!-- Custom JS -->
+    <script src="/assets/js/nba-api.js"></script>
+    <!-- Custom JS -->
+    <!-- <script src="/assets/js/pages/nba-api.js"></script> -->
+    <!-- NBA Charts -->
+    <!-- <script src="/assets/js/visualizations/nbaStats.js"></script> -->
+
+</body>
+
+</html>
