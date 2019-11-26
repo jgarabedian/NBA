@@ -33,7 +33,7 @@ function getPlayers(results, container) {
             teamLogo = document.getElementById('team-logo'),
             h5 = createElement('h5'),
             team = `${player.team.full_name}`,
-            logoDir = '/images/logos/',
+            logoDir = './images/logos/',
             p = createElement('p');
         // create unique IDs for the player card
         changeId(card, 'card' + id);
