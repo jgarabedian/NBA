@@ -24,8 +24,7 @@ function getMPG(data, playerIdx) {
 function convertTime(time) {
     let sec = time.substr(3, 2);
     let min = parseInt(time.substr(0, 2), 10);
-    sec = parseInt(sec, 10)
-    sec = sec / 60;
+    sec = parseInt(sec, 10) / 60;
     time = min + sec;
     return time;
 }
