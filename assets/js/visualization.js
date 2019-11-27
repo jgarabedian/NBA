@@ -1,23 +1,5 @@
 // The container we're going to put it in
 var nbaChart = echarts.init(document.getElementById('charts'));
-
-// var data = {
-//     'categories': ['ast', 'blk'],
-//     'players': ['Jrue Holiday', 'Mike Conley'],
-//     'playerStats': {
-//         'Jrue Holiday': {
-//             'ast': 3,
-//             'blk': 4,
-//             'stl': 3
-//         },
-//         'Mike Conley': {
-//             'ast': 2,
-//             'blk': 6,
-//             'stl': 3
-//         }
-//     }
-// }
-
 var colors = ['#5BC0EB', '#9BC53D'];
 
 function getColors(colors) {
@@ -68,7 +50,7 @@ function getInitialStats(data) {
         player2Name = getPlayerNames(data)[1];
     var player1Stats = data[player1Name],
         player2Stats = data[player2Name];
-    
+
     // We need to do this loops while we go through each player and write it back
     // This remove the key value pairs not in our array
     for (i; i < keysStats.length; i++) {

@@ -13,7 +13,7 @@ var statsCompared = {};
 function getPlayers(results, container) {
     // if the search again, card is not selected
     // debugger;
-    if (container === 'card-container') {
+    if (container === 'card-container-left') {
         leftSelect = false;
         leftPlayer = '';
     }
@@ -45,7 +45,7 @@ function getPlayers(results, container) {
         // Add team name
         appendElement(teamName, h5);
         h5.innerHTML = team;
-        
+
         // Add player name
         appendElement(playerName, p);
         p.innerHTML = `${player.first_name}` + ' ' + `${player.last_name}`;
@@ -120,7 +120,7 @@ function cardFocus(container, id) {
         }
     }
     // After removing other cards, get the name and id
-    if (container === 'card-container') {
+    if (container === 'card-container-left') {
         leftSelect = true;
         leftPlayer = id.replace('card', '');
         selectedPlayers.left[0] = div.querySelector('#full-name').innerText;
@@ -225,9 +225,9 @@ function createList(players, idx, ul, name) {
 function checkButton() {
     btn = document.getElementById('compare-players');
     if (!leftSelect || !rightSelect) {
-        btn.className = 'primary fit disabled';
+        btn.className = 'disabled';
     } else {
-        btn.className = 'primary fit';
+        btn.className = 'primary';
     }
 }
 
@@ -263,12 +263,12 @@ window.onload = function () {
 function getEventListeners() {
     document.getElementById('playerSearchBtn').addEventListener('click', function () {
         var searchStr = document.getElementById('player-search-field').value;
-        searchPlayer(searchStr, 'card-container');
+        searchPlayer(searchStr, 'card-container-left');
     });
     document.getElementById('player-search-field').addEventListener('keypress', function (e) {
         if (e.which === 13) {
             var searchStr = document.getElementById('player-search-field').value;
-            searchPlayer(searchStr, 'card-container');
+            searchPlayer(searchStr, 'card-container-left');
         }
     });
     document.getElementById('playerSearchBtn-2').addEventListener('click', function () {

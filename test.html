@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>NBA</title>
     <meta charset="utf-8">
@@ -14,14 +13,13 @@
     <!-- Echarts -->
     <script src="./assets/js/echarts/echarts.min.js"></script>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./main.css">
     <!-- Custom JS -->
-    <script src="./assets/js/main.js"></script>
+    <script src="./main.js"></script>
 
 
 
 </head>
-
 <body>
     <div id="main" class="alt">
         <header class="header">
@@ -30,13 +28,11 @@
         <div class="container">
             <div class="container__search">
                 <div class="container__search__left">
-                    <input type="text" name="player-search" id="player-search-field" value=""
-                        placeholder="Anthony Davis">
+                    <input type="text" name="player-search" id="player-search-field" value="" placeholder="Anthony Davis">
                     <input type="submit" value="Search" class="primary" id="playerSearchBtn">
                 </div>
                 <div class="container__search__right">
-                    <input type="text" name="player-search-2" id="player-search-field-2" value=""
-                        placeholder="Jrue Holiday">
+                    <input type="text" name="player-search-2" id="player-search-field-2" value="" placeholder="Jrue Holiday">
                     <input type="submit" value="Search" class="primary" id="playerSearchBtn-2">
                 </div>
             </div>
@@ -58,19 +54,15 @@
                     <ul id="stats-right"></ul>
                 </div>
             </div>
-            <div class="container__compare__mpg">
-                <div id="mpg-left"></div>
-                <div id="mpg-right"></div>
-            </div>
+            <!-- <div id="mpg"></div> -->
         </div>
     </div>
 
     <!-- NBA Charts -->
-    <script src="./assets/js/visualization.js"></script>
-
+    <script src="./visualization.js"></script>
+    
     <!-- Custom JS -->
-    <script src="./assets/js/main.js"></script>
+    <script src="./main.js"></script>
     <script src="./assets/js/mpg.js"></script>
 </body>
-
 </html>
