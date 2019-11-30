@@ -43,28 +43,31 @@ var stats = ['ast', 'blk', 'dreb', 'fg3m', 'fgm', 'fga', 'fta', 'ftm', 'oreb', '
 
 function getInitialStats(data) {
     var i = 0,
-        j = 0,
         keysStats = Object.keys(data[getPlayerNames(data)[0]]),
-        deleteIdx = [],
+        keepIdx = [],
         player1Name = getPlayerNames(data)[0],
-        player2Name = getPlayerNames(data)[1];
+        player2Name = getPlayerNames(data)[1],
+        player1 = {},
+        player2 = {};
     var player1Stats = data[player1Name],
         player2Stats = data[player2Name];
+    var chartData = {};
 
     // We need to do this loops while we go through each player and write it back
     // This remove the key value pairs not in our array
     for (i; i < keysStats.length; i++) {
-        if (!(stats.indexOf(keysStats[i]) > -1)) {
-            deleteIdx.push(keysStats[i]);
-            // delete data[player1Name][keysStats[i]];
-            // delete data[player2Name][keysStats[i]];
+        if (stats.indexOf(keysStats[i]) > -1) {
+            keepIdx.push(keysStats[i]);
         }
     }
-    for (j; j < deleteIdx.length; j++) {
-        delete player1Stats[deleteIdx[j]];
-        delete player2Stats[deleteIdx[j]];
+    for (i = 0; i < keepIdx.length; i++) {
+        player1[keepIdx[i]] = player1Stats[keepIdx[i]];
+        player2[keepIdx[i]] = player2Stats[keepIdx[i]];
     }
-    return data
+    chartData[player1Name] = player1;
+    chartData[player2Name] = player2;
+
+    return chartData
 }
 
 function paint(data) {

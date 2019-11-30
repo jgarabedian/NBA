@@ -29,6 +29,8 @@ body {
 header {
     width: 100%;
     text-align: center;
+    border-bottom: 3px solid white;
+    margin-bottom: 25px;
 }
 /* Search Container */
 .container__search {
@@ -147,11 +149,13 @@ header {
     height: 30vh;
     text-align: center;
     display: inline-flex;
+    margin-bottom: 5%;
 }
 
 #mpg-left, #mpg-right {
     width: 30%;
     margin-left: 10%;
+    margin-right: 10%;
 }
 /* Input Styling */
 input::-moz-focus-inner {

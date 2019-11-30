@@ -7,8 +7,8 @@ var selectedPlayers = {
     left: [],
     right: []
 };
-var chartData = {};
-var statsCompared = {};
+var fullData = {};
+// var statsCompared = {};
 
 function getPlayers(results, container) {
     // if the search again, card is not selected
@@ -31,7 +31,7 @@ function getPlayers(results, container) {
             playerName = document.getElementById('player-name'),
             playerStats = document.getElementById('player-stats'),
             teamLogo = document.getElementById('team-logo'),
-            h5 = createElement('h5'),
+            h2 = createElement('h2'),
             team = `${player.team.full_name}`,
             logoDir = './images/logos/',
             p = createElement('p');
@@ -43,8 +43,8 @@ function getPlayers(results, container) {
         changeId(teamLogo, 'team-logo-' + team);
         teamLogo.src = logoDir + team + '.png'
         // Add team name
-        appendElement(teamName, h5);
-        h5.innerHTML = team;
+        appendElement(teamName, h2);
+        h2.innerHTML = team;
 
         // Add player name
         appendElement(playerName, p);
@@ -160,7 +160,7 @@ function getPlayerStats() {
 function showPlayerStats(players) {
     console.log(players);
     // clear chart Data
-    chartData = {};
+    let chartData = {};
     if (players[0].player_id.toString() == leftPlayer) {
         createList(players, 0, 'stats-left', selectedPlayers["left"][0]);
         chartData[selectedPlayers["left"][0]] = players[0];
@@ -175,8 +175,10 @@ function showPlayerStats(players) {
         createList(players, 0, 'stats-right', selectedPlayers["right"][0]);
         chartData[selectedPlayers["right"][0]] = players[0];
     }
-    data = getInitialStats(chartData);
-    paint(data);
+    fullData = chartData;
+    let statData = getInitialStats(fullData);
+    paint(statData);
+    paintMPG(getMPGData(fullData));
 }
 
 function createList(players, idx, ul, name) {
@@ -258,6 +260,7 @@ function destroyList(container) {
 window.onload = function () {
     getEventListeners();
     this.checkButton();
+    // this.paintMPG();
 }
 
 function getEventListeners() {
