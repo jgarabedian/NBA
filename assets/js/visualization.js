@@ -6,6 +6,11 @@ function getColors(colors) {
     return colors;
 }
 
+/*
+* pass in object
+* get the list of categories to put on the axis
+* return array
+*/
 function getCategories(data) {
     // Just select the first player to get the keys
     var categories = Object.keys(data[getPlayerNames(data)[0]]);
@@ -16,7 +21,11 @@ function getCategories(data) {
     }
     return cat;
 }
-
+/*
+* pass in object
+* get list of players selected
+* return array
+*/
 function getPlayerNames(data) {
     var players = Object.keys(data);
     var play = [],
@@ -26,7 +35,11 @@ function getPlayerNames(data) {
     }
     return play;
 }
-
+/*
+* pass in object and index of player
+* get a list of corresponding stats for the selected player to paint on the chart
+* return array
+*/
 function getStats(data, playerIdx) {
     var stats = Object.values(data[getPlayerNames(data)[playerIdx]]);
     var statData = [],
@@ -41,6 +54,11 @@ function getStats(data, playerIdx) {
 // data I actually want to show
 var stats = ['ast', 'blk', 'dreb', 'fg3m', 'fgm', 'fga', 'fta', 'ftm', 'oreb', 'pf', 'pts', 'reb', 'stl', 'turnover'];
 
+/*
+* pass in object
+* we don't want to put on the bar chart every stat, so make new object of what we want to paint
+* return object
+*/
 function getInitialStats(data) {
     var i = 0,
         keysStats = Object.keys(data[getPlayerNames(data)[0]]),
@@ -69,6 +87,8 @@ function getInitialStats(data) {
 
     return chartData
 }
+
+// TODO: Make getOption a function
 
 function paint(data) {
     var option = {
