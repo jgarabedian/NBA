@@ -73,7 +73,8 @@ function setChartOption(data, idx) {
             textStyle: {
                 color: 'white',
                 fontStyle: 'italic'
-            }
+            },
+            padding: 10
         },
         tooltip: {
             trigger: 'item',
@@ -83,7 +84,7 @@ function setChartOption(data, idx) {
             {
                 name: getPlayerNames(data)[idx],
                 type: 'pie',
-                radius: ['70%', '80%'],
+                radius: ['50%', '60%'],
                 avoidLabelOverlap: false,
                 label: {
                     show: false,
