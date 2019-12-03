@@ -1,29 +1,16 @@
 // The container we're going to put it in
 var nbaChart = echarts.init(document.getElementById('charts'));
-
-// var data = {
-//     'categories': ['ast', 'blk'],
-//     'players': ['Jrue Holiday', 'Mike Conley'],
-//     'playerStats': {
-//         'Jrue Holiday': {
-//             'ast': 3,
-//             'blk': 4,
-//             'stl': 3
-//         },
-//         'Mike Conley': {
-//             'ast': 2,
-//             'blk': 6,
-//             'stl': 3
-//         }
-//     }
-// }
-
 var colors = ['#5BC0EB', '#9BC53D'];
 
 function getColors(colors) {
     return colors;
 }
 
+/*
+* pass in object
+* get the list of categories to put on the axis
+* return array
+*/
 function getCategories(data) {
     // Just select the first player to get the keys
     var categories = Object.keys(data[getPlayerNames(data)[0]]);
@@ -34,7 +21,11 @@ function getCategories(data) {
     }
     return cat;
 }
-
+/*
+* pass in object
+* get list of players selected
+* return array
+*/
 function getPlayerNames(data) {
     var players = Object.keys(data);
     var play = [],
@@ -44,7 +35,11 @@ function getPlayerNames(data) {
     }
     return play;
 }
-
+/*
+* pass in object and index of player
+* get a list of corresponding stats for the selected player to paint on the chart
+* return array
+*/
 function getStats(data, playerIdx) {
     var stats = Object.values(data[getPlayerNames(data)[playerIdx]]);
     var statData = [],
@@ -59,31 +54,41 @@ function getStats(data, playerIdx) {
 // data I actually want to show
 var stats = ['ast', 'blk', 'dreb', 'fg3m', 'fgm', 'fga', 'fta', 'ftm', 'oreb', 'pf', 'pts', 'reb', 'stl', 'turnover'];
 
+/*
+* pass in object
+* we don't want to put on the bar chart every stat, so make new object of what we want to paint
+* return object
+*/
 function getInitialStats(data) {
     var i = 0,
-        j = 0,
         keysStats = Object.keys(data[getPlayerNames(data)[0]]),
-        deleteIdx = [],
+        keepIdx = [],
         player1Name = getPlayerNames(data)[0],
-        player2Name = getPlayerNames(data)[1];
+        player2Name = getPlayerNames(data)[1],
+        player1 = {},
+        player2 = {};
     var player1Stats = data[player1Name],
         player2Stats = data[player2Name];
-    
+    var chartData = {};
+
     // We need to do this loops while we go through each player and write it back
     // This remove the key value pairs not in our array
     for (i; i < keysStats.length; i++) {
-        if (!(stats.indexOf(keysStats[i]) > -1)) {
-            deleteIdx.push(keysStats[i]);
-            // delete data[player1Name][keysStats[i]];
-            // delete data[player2Name][keysStats[i]];
+        if (stats.indexOf(keysStats[i]) > -1) {
+            keepIdx.push(keysStats[i]);
         }
     }
-    for (j; j < deleteIdx.length; j++) {
-        delete player1Stats[deleteIdx[j]];
-        delete player2Stats[deleteIdx[j]];
+    for (i = 0; i < keepIdx.length; i++) {
+        player1[keepIdx[i]] = player1Stats[keepIdx[i]];
+        player2[keepIdx[i]] = player2Stats[keepIdx[i]];
     }
-    return data
+    chartData[player1Name] = player1;
+    chartData[player2Name] = player2;
+
+    return chartData
 }
+
+// TODO: Make getOption a function
 
 function paint(data) {
     var option = {

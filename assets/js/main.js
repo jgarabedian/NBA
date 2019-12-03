@@ -7,13 +7,16 @@ var selectedPlayers = {
     left: [],
     right: []
 };
-var chartData = {};
-var statsCompared = {};
+var fullData = {};
 
+/*
+* pass in object, string
+* take the results of the API search and paint player cards
+* creates HTML in the appropriate container
+*/
 function getPlayers(results, container) {
-    // if the search again, card is not selected
-    // debugger;
-    if (container === 'card-container') {
+    // if they search again, card is not selected
+    if (container === 'card-container-left') {
         leftSelect = false;
         leftPlayer = '';
     }
@@ -31,7 +34,7 @@ function getPlayers(results, container) {
             playerName = document.getElementById('player-name'),
             playerStats = document.getElementById('player-stats'),
             teamLogo = document.getElementById('team-logo'),
-            h5 = createElement('h5'),
+            h2 = createElement('h2'),
             team = `${player.team.full_name}`,
             logoDir = './images/logos/',
             p = createElement('p');
@@ -43,13 +46,14 @@ function getPlayers(results, container) {
         changeId(teamLogo, 'team-logo-' + team);
         teamLogo.src = logoDir + team + '.png'
         // Add team name
-        appendElement(teamName, h5);
-        h5.innerHTML = team;
-        
+        appendElement(teamName, h2);
+        h2.innerHTML = team;
+
         // Add player name
         appendElement(playerName, p);
         p.innerHTML = `${player.first_name}` + ' ' + `${player.last_name}`;
         p.id = 'full-name';
+
         // Add player height
         p = createElement('p');
         appendElement(playerStats, p);
@@ -64,7 +68,10 @@ function getPlayers(results, container) {
         p.innerHTML = 'Position: ' + `${player.position}`;
     });
 }
-
+/*
+* pass in search string, container as string
+* call corresponding functions when user searches here
+*/
 function searchPlayer(search, container) {
     destroyList(container);
     var url = 'https://free-nba.p.rapidapi.com/players?page=0&per_page=50&search=';
@@ -91,7 +98,9 @@ function searchPlayer(search, container) {
             console.log(err);
         });
 }
-
+/*
+* Because new HTML is being created, add event listener to new HTML
+*/
 function addCardClick() {
     let cards = document.getElementsByClassName('player__card'),
         i = 0;
@@ -102,12 +111,16 @@ function addCardClick() {
         });
     }
 }
-
+/*
+* pass in container as string, element id as string
+* when user clicks on a card, focus on the card clicked on
+*/
 function cardFocus(container, id) {
     let div = document.getElementById(container),
         cards = div.getElementsByClassName('player__card'),
         i = 0,
         length = cards.length;
+    // Hide all the cards
     for (i; i < length; i++) {
         if (cards[i].id != id) {
             cards[i].style.display = 'none';
@@ -120,7 +133,7 @@ function cardFocus(container, id) {
         }
     }
     // After removing other cards, get the name and id
-    if (container === 'card-container') {
+    if (container === 'card-container-left') {
         leftSelect = true;
         leftPlayer = id.replace('card', '');
         selectedPlayers.left[0] = div.querySelector('#full-name').innerText;
@@ -134,7 +147,10 @@ function cardFocus(container, id) {
     }
     checkButton();
 }
-
+/*
+* get the stats of the players than are selected
+* call necessary functions from here
+*/
 function getPlayerStats() {
     if (leftSelect && rightSelect) {
         let players = 'player_ids[]=' + leftPlayer + '&player_ids[]=' + rightPlayer;
@@ -148,8 +164,6 @@ function getPlayerStats() {
                     // TODO: if data.data is empty, catch that
                     statsCompared = data.data;
                     showPlayerStats(statsCompared);
-                    // debugger;
-                    // paint(chartData);
                 })
             })
     } else {
@@ -158,27 +172,30 @@ function getPlayerStats() {
 }
 
 function showPlayerStats(players) {
-    console.log(players);
-    // clear chart Data
-    chartData = {};
+    // clear fullData
+    fullData = {};
     if (players[0].player_id.toString() == leftPlayer) {
         createList(players, 0, 'stats-left', selectedPlayers["left"][0]);
-        chartData[selectedPlayers["left"][0]] = players[0];
+        fullData[selectedPlayers["left"][0]] = players[0];
     } else {
         createList(players, 1, 'stats-left', selectedPlayers["left"][0]);
-        chartData[selectedPlayers["left"][0]] = players[1];
+        fullData[selectedPlayers["left"][0]] = players[1];
     }
     if (players[1].player_id.toString() == rightPlayer) {
         createList(players, 1, 'stats-right', selectedPlayers["right"][0]);
-        chartData[selectedPlayers["right"][0]] = players[1];
+        fullData[selectedPlayers["right"][0]] = players[1];
     } else {
         createList(players, 0, 'stats-right', selectedPlayers["right"][0]);
-        chartData[selectedPlayers["right"][0]] = players[0];
+        fullData[selectedPlayers["right"][0]] = players[0];
     }
-    data = getInitialStats(chartData);
-    paint(data);
+    let statData = getInitialStats(fullData);
+    paint(statData);
+    paintMPG(getMPGData(fullData));
 }
-
+/*
+* pass in object, number, string for container, string as player name
+* clear the list that already exists, then add some stats as an elemtn
+*/
 function createList(players, idx, ul, name) {
     destroyList(ul);
     var list = document.getElementById(ul);
@@ -221,37 +238,40 @@ function createList(players, idx, ul, name) {
     appendElement(list, threePerc);
     appendElement(list, blk);
 }
-
+/*
+* Only show the compare players button if user
+* has selected 2 players
+*/
 function checkButton() {
     btn = document.getElementById('compare-players');
     if (!leftSelect || !rightSelect) {
-        btn.className = 'primary fit disabled';
+        btn.className = 'disabled';
     } else {
-        btn.className = 'primary fit';
+        btn.className = 'primary';
     }
 }
+
+/*
+* Following functions help create/edit HTML
+* All parameters are strings
+*/
 
 function addClass(el, className) {
     el.className = className;
     return el;
 }
-
 function changeId(el, id) {
     el.id = id;
     return el;
 }
-
 function createElement(el) {
     return document.createElement(el)
 }
-
 function appendElement(parent, el) {
     return parent.appendChild(el);
 }
-
 function destroyList(container) {
     document.getElementById(container).innerHTML = '';
-    // console.log('destroy past results')
 }
 
 // get event listeners only when page loads
@@ -263,12 +283,12 @@ window.onload = function () {
 function getEventListeners() {
     document.getElementById('playerSearchBtn').addEventListener('click', function () {
         var searchStr = document.getElementById('player-search-field').value;
-        searchPlayer(searchStr, 'card-container');
+        searchPlayer(searchStr, 'card-container-left');
     });
     document.getElementById('player-search-field').addEventListener('keypress', function (e) {
         if (e.which === 13) {
             var searchStr = document.getElementById('player-search-field').value;
-            searchPlayer(searchStr, 'card-container');
+            searchPlayer(searchStr, 'card-container-left');
         }
     });
     document.getElementById('playerSearchBtn-2').addEventListener('click', function () {
@@ -282,12 +302,10 @@ function getEventListeners() {
         }
     });
     document.getElementById('compare-players').addEventListener('click', getPlayerStats);
-    // document.addEventListener('click', checkButton);
-    // nbaChart = echarts.init(document.getElementById('charts'));
 }
 
 
-
+// HTML we pull from to create the player card
 var playerCard = '';
 playerCard += '<div class="player__card" id="card">';
 playerCard += '<div class="player__card__header">';
