@@ -2,7 +2,8 @@
 var leftSelect = false,
     leftPlayer = '',
     rightPlayer = '',
-    rightSelect = false;
+    rightSelect = false,
+    mobile = window.matchMedia("(max-width: 600px)").matches;
 var selectedPlayers = {
     left: [],
     right: []

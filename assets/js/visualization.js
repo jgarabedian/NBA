@@ -1,9 +1,15 @@
 // The container we're going to put it in
-var nbaChart = echarts.init(document.getElementById('charts'));
+var nbaChart;
 var colors = ['#5BC0EB', '#9BC53D'];
+var title = true;
 
 function getColors(colors) {
     return colors;
+}
+
+function initialize() {
+    var nbaChart = echarts.init(document.getElementById('charts'));
+    return nbaChart;
 }
 
 /*
@@ -55,6 +61,17 @@ function getStats(data, playerIdx) {
 var stats = ['ast', 'blk', 'dreb', 'fg3m', 'fgm', 'fga', 'fta', 'ftm', 'oreb', 'pf', 'pts', 'reb', 'stl', 'turnover'];
 
 /*
+* show title based on if mobile or not
+*/
+function showTitle() {
+    if (mobile) {
+        return false
+    } else {
+        return true
+    }
+}
+
+/*
 * pass in object
 * we don't want to put on the bar chart every stat, so make new object of what we want to paint
 * return object
@@ -91,10 +108,11 @@ function getInitialStats(data) {
 // TODO: Make getOption a function
 
 function paint(data) {
+    var nbaChart = initialize();
     var option = {
         color: ['#5BC0EB', '#9BC53D'],
         title: {
-            show: true,
+            show: showTitle(),
             text: 'Player Comparison',
             textStyle: {
                 color: 'white',

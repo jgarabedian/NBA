@@ -39,11 +39,24 @@ header {
     width: 90%;
 }
 
+
+
 .container__search__left, .container__search__right {
     width: 50%;
     text-align: center;
     display: inline-flex;
 }
+@media only screen and (max-width: 768px) {
+    .container__search {
+        display: block;
+    }
+    .container__search__left, .container__search__right {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+}
+
 /* Card Container */
 .container__cards {
     width: 100%;
@@ -53,6 +66,7 @@ header {
     overflow: hidden;
     margin-top: 25px;
 }
+
 .container__cards__holder {
     width: 48%;
     padding-left: 1%;
@@ -60,6 +74,16 @@ header {
     float: left;
     max-height: 78vh;
     overflow: overlay;
+}
+
+@media only screen and (max-width: 768px) {
+    .container__cards {
+        display: block;
+    }
+    .container__cards__holder {
+        width: 98%;
+        /* max-height: 15vh; */
+    }
 }
 
 /* Style the player card :) */
@@ -106,6 +130,25 @@ header {
     height: 150px;
 }
 
+@media only screen and (max-width: 768px) {
+    .container__cards__holder {
+        width: 100%;
+    }
+    .player__card {
+        font-size: 15px;
+        width: 95%;
+    }
+    .player__card__content__left .team-logo {
+        height: 100px;
+    }
+    .player__card__content {
+        height: 120px;
+    }
+    .player__card-team {
+        font-size: 12px;
+    }
+}
+
 /* Hover effects */
 .player__card:hover {
     background-color: #464A61;
@@ -116,6 +159,16 @@ header {
 .container__compare__submit {
     width: 100%;
     text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .container__compare__submit {
+        display: grid;
+    }
+    #compare-players {
+        margin-right: 20px;
+        font-size: 1em;
+    }
 }
 
 /* Player Compare */
@@ -140,7 +193,19 @@ header {
 
 .container__compare__stats__middle {
     width: 50%;
-    height: 750px;
+    height: 768px;
+}
+
+@media only screen and (max-width: 768px) {
+    .container__compare__stats {
+        display: block;
+        width: 100%;
+        margin-top: 15px;
+    }
+    .container__compare__stats__left, .container__compare__stats__right, .container__compare__stats__middle {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 /* Minutes Per Game visualization */
@@ -212,6 +277,13 @@ input[type="text"]:active, input[type="text"]:focus {
     background-color: rgba(155, 241, 255, 0.1);
     box-shadow: inset 0 0 0 2px #53e3fb;
     color: white;
+}
+
+@media only screen and (max-width: 768px) {
+    input {
+        font-size: 13pt;
+        margin-bottom: 10px;
+    }
 }
 
 .disabled {
