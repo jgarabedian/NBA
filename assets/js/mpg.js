@@ -77,8 +77,7 @@ function setChartOption(data, idx) {
             padding: 10
         },
         tooltip: {
-            trigger: 'item',
-            formatter: "{c} mpg"
+            show: false
         },
         series: [
             {

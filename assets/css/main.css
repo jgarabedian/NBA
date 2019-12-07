@@ -150,7 +150,7 @@ header {
 }
 
 /* Hover effects */
-.player__card:hover {
+.player__card:hover, .selected {
     background-color: #464A61;
     border: 1px dashed gold;
 }

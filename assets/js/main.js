@@ -121,6 +121,7 @@ function cardFocus(container, id) {
         cards = div.getElementsByClassName('player__card'),
         i = 0,
         length = cards.length;
+    document.getElementById(id).className = 'player__card selected';
     // Hide all the cards
     for (i; i < length; i++) {
         if (cards[i].id != id) {
