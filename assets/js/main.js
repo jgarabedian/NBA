@@ -2,7 +2,8 @@
 var leftSelect = false,
     leftPlayer = '',
     rightPlayer = '',
-    rightSelect = false;
+    rightSelect = false,
+    mobile = window.matchMedia("(max-width: 600px)").matches;
 var selectedPlayers = {
     left: [],
     right: []
@@ -120,6 +121,7 @@ function cardFocus(container, id) {
         cards = div.getElementsByClassName('player__card'),
         i = 0,
         length = cards.length;
+    document.getElementById(id).className = 'player__card selected';
     // Hide all the cards
     for (i; i < length; i++) {
         if (cards[i].id != id) {
