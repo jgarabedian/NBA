@@ -11,3 +11,7 @@ pip install -r requirements.txt
 ## to start the server and see your changes, run
 
 python app.py
+
+> Did you install more packages in your venv?
+
+pip freeze > requirements.txt
