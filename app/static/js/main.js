@@ -37,7 +37,7 @@ function getPlayers(results, container) {
             teamLogo = document.getElementById('team-logo'),
             h2 = createElement('h2'),
             team = `${player.team.full_name}`,
-            logoDir = './images/logos/',
+            logoDir = './static/images/logos/',
             p = createElement('p');
         // create unique IDs for the player card
         changeId(card, 'card' + id);
@@ -277,10 +277,8 @@ function destroyList(container) {
 }
 
 // get event listeners only when page loads
-window.onload = function () {
-    getEventListeners();
-    this.checkButton();
-}
+getEventListeners();
+this.checkButton();
 
 function getEventListeners() {
     document.getElementById('playerSearchBtn').addEventListener('click', function () {
