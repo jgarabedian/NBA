@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>NBA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./static/styles/main.css">
+    <!-- Custom JS -->
+    <!-- <script src="./assets/js/main.js"></script> -->
+
+
+
+</head>
+
+<body>
+    <div id="main" class="alt">
+        <!-- <header class="header">
+            <h1>NBA Stats</h1>
+        </header> -->
+        {% include 'header.html' %}
+        <div class="container">
+            {% block container %}
+            {% endblock %}
+        </div>
+    </div>
+
+
+</body>
+
+</html>

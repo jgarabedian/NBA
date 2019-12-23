@@ -1,0 +1,12 @@
+{% extends "base.html.j2" %}
+{% block container %}
+<h1>These are the matchups I'm tracking</h1>
+{% for match in matchups%}
+<h5>{{match}}</h5>
+    {%endfor%}
+<br>
+<h1>These are the odds I'm tracking</h1>
+{% for odd in odds%}
+<h5>{{odd}}</h5>
+{%endfor%}
+{% endblock %}
