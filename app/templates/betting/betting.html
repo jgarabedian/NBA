@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Betting Odds</title>
+    </head>
+    <body>
+        <h1>These are the matchups I'm tracking</h1>
+        {% for match in matchups%}
+        <h5>{{match}}</h5>
+         {%endfor%}
+        <br>
+        <h1>These are the odds I'm tracking</h1>
+        {% for odd in odds%}
+        <h5>{{odd}}</h5>
+        {%endfor%}
+    </body>
+</html>
