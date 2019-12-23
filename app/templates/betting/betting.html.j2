@@ -8,6 +8,7 @@
     {%endfor%}
     <br>
     <h1>These are the odds I'm tracking</h1>
+    <h4>First Matchup!</h4>
     {% for odd in odds %}
         <h5>{{odd}} -- index: {{loop.index}}</h5>
         {% if loop.index % 6 == 0 %}
