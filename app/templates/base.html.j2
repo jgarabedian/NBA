@@ -2,12 +2,22 @@
 <html lang="en">
 
 <head>
+    {% if title %}
+    <title>NBA - {{title}}</title>
+    {% else %}
     <title>NBA</title>
+    {% endif %}
+
+    
+
+    {% block head %}
+    
+    {% endblock head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./static/styles/main.css">
+    {# <link rel="stylesheet" href="./static/styles/main.css"> #}
     <!-- Custom JS -->
     <!-- <script src="./assets/js/main.js"></script> -->
 
@@ -17,17 +27,14 @@
 
 <body>
     <div id="main" class="alt">
-        <!-- <header class="header">
-            <h1>NBA Stats</h1>
-        </header> -->
-        {% include 'header.html' %}
+        {% include "header.html.j2" %}
         <div class="container">
             {% block container %}
             {% endblock %}
         </div>
     </div>
 
-
+<script src="https://use.fontawesome.com/60ea78b833.js"></script>
 </body>
 
 </html>
