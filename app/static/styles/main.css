@@ -25,6 +25,23 @@ body {
     background-color: #242943;
     color: white;
 }
+/* Header */
+header {
+    width: 100%;
+    text-align: center;
+    border-bottom: 3px solid white;
+    margin-bottom: 25px;
+    padding-top: 1px;
+    display: block;
+}
+header i {
+    float: left;
+    margin: 5px;
+    padding-top: 15px;
+}
+header a {
+    color: white;
+}
 /* Search Container */
 .container__search {
     display: inline-flex;

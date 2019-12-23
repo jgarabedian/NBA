@@ -1,6 +1,4 @@
-<head>
-    <script src="./statics/js/betting.js"></script>
-</head>
+
 {% extends "base.html.j2" %}
 {% block container %}
 <div class="betting">
@@ -10,8 +8,12 @@
     {%endfor%}
     <br>
     <h1>These are the odds I'm tracking</h1>
-    {% for odd in odds%}
-        <h5>{{odd}}</h5>
+    {% for odd in odds %}
+        <h5>{{odd}} -- index: {{loop.index}}</h5>
+        {% if loop.index % 6 == 0 %}
+            <br><h4>Next Matchup!</h4><br>
+        {% endif %}
     {%endfor%}
 </div>
+<script src="{{ url_for('static', filename='js/betting.js')}}"></script>
 {% endblock container %}

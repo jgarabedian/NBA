@@ -7,8 +7,7 @@
     {% else %}
     <title>NBA</title>
     {% endif %}
-
-    
+    <link rel="shortcut icon" herf="{{ url_for('static', filename='favicon.ico') }}">
 
     {% block head %}
     
@@ -16,12 +15,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!-- Custom CSS -->
-    {# <link rel="stylesheet" href="./static/styles/main.css"> #}
-    <!-- Custom JS -->
-    <!-- <script src="./assets/js/main.js"></script> -->
-
-
 
 </head>
 

@@ -1,1 +1,1 @@
-console.log(matchups)
+console.log('Betting page, welcome!')
