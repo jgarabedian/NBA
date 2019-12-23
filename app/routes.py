@@ -4,10 +4,10 @@ from app.scripts import *
 
 
 @app.route('/')
-@app.route('/home')
+@app.route('/players')
 def index():
     user = {'username': 'Jack'}
-    return render_template('index.html')
+    return render_template('players/players.html.j2')
 
 @app.route('/betting')
 def betting():
