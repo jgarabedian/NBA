@@ -1,22 +1,24 @@
-
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/betting.css.jinja') }}">
+{% endblock head %}
 {% extends "base.html.j2" %}
 {% block container %}
 <div class="betting">
-    {# <h1>These are the matchups I'm tracking</h1>
-    {% for match in matchups%}
-        <h5>{{match}}</h5>
-    {%endfor%}
-    <br> #}
-    <h1>These are the companies I'm finding (all {{matchups|length - 1}} of them)</h1>
-    {% for comp in companies %}
-    <h4>{{comp}}</h4>
-    {% endfor %}
     <h1>These are the odds I'm tracking</h1>
-    <h4>First Matchup!</h4>
     {% for odd in odds|batch(matchups|length - 1, '-') -%}
-        <h4>{{matchups[loop.index]}}</h4>
-        {# TODO: Nest loop the spreads with the companies #}
-        <h5>{{odd}}</h5>
+    <div class="betting__matchup">
+        <div class="betting__matchup__game">
+            <h2>{{matchups[loop.index - 1]}}</h2>
+        </div>
+        <div class="betting__matchup__spread">
+            {% for column in odd %}
+                <div class="betting__matchup__spread__content">
+                    <h5>{{companies[loop.index - 1]}}</h5>
+                    <p>{{column}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
     {%endfor%}
 </div>
 <script src="{{ url_for('static', filename='js/betting.js')}}"></script>
