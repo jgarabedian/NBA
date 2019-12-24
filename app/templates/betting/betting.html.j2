@@ -2,18 +2,21 @@
 {% extends "base.html.j2" %}
 {% block container %}
 <div class="betting">
-    <h1>These are the matchups I'm tracking</h1>
+    {# <h1>These are the matchups I'm tracking</h1>
     {% for match in matchups%}
         <h5>{{match}}</h5>
     {%endfor%}
-    <br>
+    <br> #}
+    <h1>These are the companies I'm finding (all {{matchups|length - 1}} of them)</h1>
+    {% for comp in companies %}
+    <h4>{{comp}}</h4>
+    {% endfor %}
     <h1>These are the odds I'm tracking</h1>
     <h4>First Matchup!</h4>
-    {% for odd in odds %}
-        <h5>{{odd}} -- index: {{loop.index}}</h5>
-        {% if loop.index % 6 == 0 %}
-            <br><h4>Next Matchup!</h4><br>
-        {% endif %}
+    {% for odd in odds|batch(matchups|length - 1, '-') -%}
+        <h4>{{matchups[loop.index]}}</h4>
+        {# TODO: Nest loop the spreads with the companies #}
+        <h5>{{odd}}</h5>
     {%endfor%}
 </div>
 <script src="{{ url_for('static', filename='js/betting.js')}}"></script>

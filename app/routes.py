@@ -17,5 +17,7 @@ def index():
 def betting():
     matchupList = matchups.getMatchups()
     oddsList = spreads.getSpreads()
+    companyList = spreads.getCompanies()
     title = 'Betting'
-    return render_template('betting/betting.html.j2', matchups = matchupList, odds = oddsList, title = title)
+    return render_template('betting/betting.html.j2',
+        matchups = matchupList, odds = oddsList, companies = companyList, title = title)

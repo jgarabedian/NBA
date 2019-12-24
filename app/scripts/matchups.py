@@ -14,7 +14,7 @@ def getMatchups():
     # regex search to find the matchups
     regex = re.compile('op-matchup-wrapper basketball')
     matchups_list = soup.find_all('div', attrs={'class': regex})
-
+    # TODO: get date of matchup
     matchups = []
     for li in matchups_list:
         matchups.append(li.getText().replace("\n", "").replace("\t", "_").replace("Matchup", "Matchup: "))
