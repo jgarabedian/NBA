@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% if title %}
+    <title>NBA - {{title}}</title>
+    {% else %}
+    <title>NBA</title>
+    {% endif %}
+    <link rel="shortcut icon" herf="{{ url_for('static', filename='favicon.ico') }}">
+
+    {% block head %}
+    
+    {% endblock head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+</head>
+
+<body>
+    <div id="main" class="alt">
+        {% include "header.html.j2" %}
+        <div class="container">
+            {% block container %}
+            {% endblock %}
+        </div>
+    </div>
+
+<script src="https://use.fontawesome.com/60ea78b833.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/betting.css.jinja') }}">
+{% endblock head %}
+{% extends "base.html.j2" %}
+{% block container %}
+<div class="betting">
+    {% for odd in odds|batch(matchups|length - 1, '-') -%}
+    {# TODO: Derive the date somehow #}
+    <div class="betting__matchup">
+        <div class="betting__matchup__game">
+            <h2>{{matchups[loop.index - 1]}}</h2>
+        </div>
+        <div class="betting__matchup__spread">
+            {% for column in odd %}
+                <div class="betting__matchup__spread__content">
+                    <h5>{{companies[loop.index - 1]}}</h5>
+                    <p>{{column}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {%endfor%}
+</div>
+<script src="{{ url_for('static', filename='js/betting.js')}}"></script>
+{% endblock container %}
