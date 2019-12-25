@@ -21,6 +21,7 @@ def getMatchups():
         matchTop = match.find('div', {'class': 'op-matchup-team op-matchup-text op-team-top'}).getText()
         matchBottom = match.find('div', {'class': 'op-matchup-team op-matchup-text op-team-bottom'}).getText()
         matchDate = match.find('a', {'class': 'base-versus'})['href']
+        # parse and format the date
         matchDate = getMatchDate(matchDate)
 
         matchVs = str(matchDate) + ' ' + str(matchTime) + ': ' + str(matchTop) + ' vs ' + str(matchBottom)
@@ -33,12 +34,13 @@ def getMatchups():
 def getMatchDate(string):
     import datetime
     import dateutil.parser as dparser
+    # parse the link to just get the date
     strLeft = string.find('odds')
-    string = string[strLeft + 5 :]
     strRight = string.rfind('-')
-    string = string[: strRight]
+
+    string = string[strLeft + 5 : strRight]
     
+    #format date
     string = dparser.parse(str(string), fuzzy=True).strftime('%B %d %Y')
     
-    print(string)
     return string
