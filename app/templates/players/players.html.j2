@@ -2,6 +2,9 @@
     <!-- Echarts -->
     <script src="./static/js/echarts/echarts.min.js"></script>
 </head>
+{% block head %}
+    <script src="{{ url_for('static', filename='js/echarts/echarts.min.js') }}"></script>
+{% endblock head %}
 {% extends "base.html.j2" %}
 {% block container %}
 <div class="container__search">
@@ -38,9 +41,9 @@
     </div>
 </div>
         <!-- NBA Charts -->
-    <script src="./static/js/visualization.js"></script>
+    <script src="{{ url_for('static', filename='js/visualization.js') }}"></script>
 
     <!-- Custom JS -->
-    <script src="./static/js/mpg.js"></script>
-    <script src="./static/js/main.js"></script>
+    <script src="{{ url_for('static', filename='js/mpg.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}

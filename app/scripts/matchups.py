@@ -20,8 +20,25 @@ def getMatchups():
         matchTime = match.find('div', {'class': 'op-matchup-time op-matchup-text'}).getText()
         matchTop = match.find('div', {'class': 'op-matchup-team op-matchup-text op-team-top'}).getText()
         matchBottom = match.find('div', {'class': 'op-matchup-team op-matchup-text op-team-bottom'}).getText()
-        matchVs = str(matchTime) + ': ' + str(matchTop) + ' vs ' + str(matchBottom)
+        matchDate = match.find('a', {'class': 'base-versus'})['href']
+        matchDate = getMatchDate(matchDate)
+
+        matchVs = str(matchDate) + ' ' + str(matchTime) + ': ' + str(matchTop) + ' vs ' + str(matchBottom)
+        
+        # print(matchDate)
         matchTeamList.append(matchVs) 
 
     return matchTeamList
 
+def getMatchDate(string):
+    import datetime
+    import dateutil.parser as dparser
+    strLeft = string.find('odds')
+    string = string[strLeft + 5 :]
+    strRight = string.rfind('-')
+    string = string[: strRight]
+    
+    string = dparser.parse(str(string), fuzzy=True).strftime('%B %d %Y')
+    
+    print(string)
+    return string
