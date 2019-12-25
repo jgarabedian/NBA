@@ -6,8 +6,10 @@ def getMatchups():
     # using odds shark
     url = 'https://www.oddsshark.com/nba/odds'
 
-    try: page = urllib.request.urlopen(url)
-    except: print("An Error Occurred opening the page")
+    try:
+        page = urllib.request.urlopen(url)
+    except:
+        print("An Error Occurred opening the page")
 
     soup = BeautifulSoup(page, 'html.parser')
 
@@ -25,22 +27,22 @@ def getMatchups():
         matchDate = getMatchDate(matchDate)
 
         matchVs = str(matchDate) + ' ' + str(matchTime) + ': ' + str(matchTop) + ' vs ' + str(matchBottom)
-        
+
         # print(matchDate)
-        matchTeamList.append(matchVs) 
+        matchTeamList.append(matchVs)
 
     return matchTeamList
 
+
 def getMatchDate(string):
-    import datetime
     import dateutil.parser as dparser
     # parse the link to just get the date
     strLeft = string.find('odds')
     strRight = string.rfind('-')
 
     string = string[strLeft + 5 : strRight]
-    
-    #format date
+
+    # format date
     string = dparser.parse(str(string), fuzzy=True).strftime('%B %d %Y')
-    
+
     return string

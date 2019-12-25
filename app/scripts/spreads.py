@@ -13,11 +13,11 @@ def getSpreads():
 
     soup = BeautifulSoup(page, 'html.parser')
 
-    #find the spreads
+    # find the spreads
     regexSpread = re.compile('op-item-wrapper')
     spread_list = soup.find_all('div', attrs={'class': regexSpread})
 
-    #get the spreads in a list
+    # get the spreads in a list
     spreads = []
     for li in spread_list:
         spreadData = li.getText().replace("-", " -").replace("+", " +")
@@ -44,7 +44,7 @@ def getCompanies():
 
     soup = BeautifulSoup(page, 'html.parser')
 
-    #find the spreads
+    # find the spreads
     regex = re.compile('op-book-header')
     company_list = soup.find_all('div', attrs={'class': regex})
     companies = []
