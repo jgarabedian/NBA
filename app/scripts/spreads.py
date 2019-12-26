@@ -1,5 +1,6 @@
 def getSpreads():
     from bs4 import BeautifulSoup
+    from urllib.error import HTTPError
     import urllib.request
     import re
 
@@ -8,8 +9,11 @@ def getSpreads():
 
     try:
         page = urllib.request.urlopen(url)
-    except:
-        print("An Error Occurred opening the page")
+    except HTTPError as err:
+        if err.code == 404:
+            print('404 Error occurred')
+        else:
+            print(err)
 
     soup = BeautifulSoup(page, 'html.parser')
 
@@ -31,6 +35,7 @@ def getSpreads():
 
 def getCompanies():
     from bs4 import BeautifulSoup
+    from urllib.error import HTTPError
     import urllib.request
     import re
 
@@ -39,8 +44,11 @@ def getCompanies():
 
     try:
         page = urllib.request.urlopen(url)
-    except:
-        print("An Error Occurred opening the page")
+    except HTTPError as err:
+        if err.code == 404:
+            print('404 Error occurred')
+        else:
+            print(err)
 
     soup = BeautifulSoup(page, 'html.parser')
 

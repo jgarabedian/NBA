@@ -1,5 +1,6 @@
 def getMatchups():
     from bs4 import BeautifulSoup
+    from urllib.error import HTTPError
     import urllib.request
     import re
 
@@ -8,8 +9,11 @@ def getMatchups():
 
     try:
         page = urllib.request.urlopen(url)
-    except:
-        print("An Error Occurred opening the page")
+    except HTTPError as err:
+        if err.code == 404:
+            print('404 Error occurred')
+        else:
+            print(err)
 
     soup = BeautifulSoup(page, 'html.parser')
 
@@ -40,7 +44,7 @@ def getMatchDate(string):
     strLeft = string.find('odds')
     strRight = string.rfind('-')
 
-    string = string[strLeft + 5 : strRight]
+    string = string[strLeft + 5:strRight]
 
     # format date
     string = dparser.parse(str(string), fuzzy=True).strftime('%B %d %Y')
