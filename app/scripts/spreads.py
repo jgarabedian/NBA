@@ -1,5 +1,6 @@
 def getSpreads():
     from bs4 import BeautifulSoup
+    from urllib.error import HTTPError
     import urllib.request
     import re
 
@@ -8,16 +9,19 @@ def getSpreads():
 
     try:
         page = urllib.request.urlopen(url)
-    except:
-        print("An Error Occurred opening the page")
+    except HTTPError as err:
+        if err.code == 404:
+            print('404 Error occurred')
+        else:
+            print(err)
 
     soup = BeautifulSoup(page, 'html.parser')
 
-    #find the spreads
+    # find the spreads
     regexSpread = re.compile('op-item-wrapper')
     spread_list = soup.find_all('div', attrs={'class': regexSpread})
 
-    #get the spreads in a list
+    # get the spreads in a list
     spreads = []
     for li in spread_list:
         spreadData = li.getText().replace("-", " -").replace("+", " +")
@@ -31,6 +35,7 @@ def getSpreads():
 
 def getCompanies():
     from bs4 import BeautifulSoup
+    from urllib.error import HTTPError
     import urllib.request
     import re
 
@@ -39,12 +44,15 @@ def getCompanies():
 
     try:
         page = urllib.request.urlopen(url)
-    except:
-        print("An Error Occurred opening the page")
+    except HTTPError as err:
+        if err.code == 404:
+            print('404 Error occurred')
+        else:
+            print(err)
 
     soup = BeautifulSoup(page, 'html.parser')
 
-    #find the spreads
+    # find the spreads
     regex = re.compile('op-book-header')
     company_list = soup.find_all('div', attrs={'class': regex})
     companies = []
