@@ -21,7 +21,6 @@ def getMatchups():
     regex = re.compile('op-matchup-wrapper basketball')
     matchups_list = soup.find_all('div', attrs={'class': regex})
     matchTeamList = []
-    # TODO: get date of matchup
     for match in matchups_list:
         matchTime = match.find('div', {'class': 'op-matchup-time op-matchup-text'}).getText()
         matchTop = match.find('div', {'class': 'op-matchup-team op-matchup-text op-team-top'}).getText()
