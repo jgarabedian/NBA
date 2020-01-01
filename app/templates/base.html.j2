@@ -20,7 +20,21 @@
 
 <body>
     <div id="main" class="alt">
-        {% include "header.html.j2" %}
+        <header>
+            <div class="header-left">
+                <a href="/">
+                <i class="fa fa-home fa-3x" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="header-middle">
+                <a href="/">
+                    <h1>NBA Stats</h1>
+                </a>
+            </div>
+            <div class="header-right">
+                {# <i class="fa fa-home fa-3x" aria-hidden="true"></i> #}
+            </div>
+        </header>
         <div class="container">
             {% block container %}
             {% endblock %}
