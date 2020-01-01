@@ -32,15 +32,16 @@ header {
     border-bottom: 3px solid white;
     margin-bottom: 25px;
     padding-top: 1px;
-    display: block;
+    display: flex;
+    justify-content: space-between;
 }
-header i {
-    float: left;
+.header-left i, .header-right i {
     margin: 5px;
     padding-top: 15px;
 }
 header a {
     color: white;
+    text-decoration: none;
 }
 /* Search Container */
 .container__search {
