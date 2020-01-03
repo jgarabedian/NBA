@@ -1,0 +1,15 @@
+{% extends "base.html.j2" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/teams.css') }}">
+{% endblock head %}
+{% block container %}
+    <div class="header">
+        <div class="header__left">
+            <h3>{{one}}</h3>
+        </div>
+        <div class="header__right">
+            <h3>{{two}}</h3>
+        </div>
+    </div>
+
+{% endblock container %}

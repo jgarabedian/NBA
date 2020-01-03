@@ -7,7 +7,7 @@
     {% for odd in odds|batch((companies|length), '-') -%}
     <div class="betting__matchup">
         <div class="betting__matchup__game">
-            <h2>{{matchups[loop.index - 1]}}</h2>
+            <h2 class="betting__matchup__game__header">{{matchups[loop.index - 1]}}</h2>
         </div>
         <div class="betting__matchup__spread">
             {% for column in odd %}
