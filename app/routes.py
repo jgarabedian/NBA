@@ -32,6 +32,10 @@ def betting():
 def matchup(matchup):
     one = teamSelection.getTeamOne(matchup)
     two = teamSelection.getTeamTwo(matchup)
-    oneKey = teamDictionary.getTeamKey(one)
-    twoKey = teamDictionary.getTeamKey(two)
-    return render_template('betting/teams.html.j2', one = one, two = two, title = oneKey)
+    oneName = teamDetails.getTeamInfo(one)['full_name']
+    twoName = teamDetails.getTeamInfo(two)['full_name']
+    oneId = str(teamDetails.getTeamInfo(one)['id'])
+    twoId = str(teamDetails.getTeamInfo(two)['id'])
+    oneStats = teamDetails.getTeamByOpponent(oneId, twoId)
+    twoStats = teamDetails.getTeamByOpponent(twoId, oneId)
+    return render_template('betting/teams.html.j2', one = oneName, two = twoName, oneStats = oneStats, twoStats = twoStats, title = oneName)

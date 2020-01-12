@@ -1,1 +1,1 @@
-from . import matchups, spreads, teamSelection, teamTest, teamDictionary
+from . import matchups, spreads, teamSelection, teamDetails

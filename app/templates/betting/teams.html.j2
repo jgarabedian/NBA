@@ -11,5 +11,10 @@
             <h3>{{two}}</h3>
         </div>
     </div>
+    <div class="one">
+    {% for key,value in oneStats.iterrows() %}
+        <p>{{key}} -- {{value}}</p><br>
+    {% endfor %}
+    </div>
 
 {% endblock container %}
