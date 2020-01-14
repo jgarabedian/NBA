@@ -10,7 +10,9 @@
                 {# <p>Games Played: {{key}}: {{value['GP']}}</p>
                 <p>Wins: {{value['W']}}</p> #}
                 {% for key, value in oneStats.iterrows() %}
-                    <p>{{col}}:: {{value[col]}}</p>
+                    <p>{{col}}:: {{value[col]}}
+                        {% if col in PCT_COL %}%{% endif %}
+                    </p>
                 {% endfor %}
                 
             {% endfor %}
@@ -21,7 +23,7 @@
                 {% if col != 'GROUP_SET' %}
                 
                     {% for key, value in twoStats.iterrows() %}
-                        <p>{{col}}:: {{value[col]}}</p>
+                        <p>{{col}}:: {{value[col]}} {% if col in PCT_COL %}%{% endif %}</p>
                     {% endfor %}
                 {% endif %}
             {% endfor %}

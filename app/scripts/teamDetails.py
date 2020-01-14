@@ -11,8 +11,12 @@ def getTeamByOpponent(team1, team2):
     teamDash = teamdashboardbyopponent.TeamDashboardByOpponent(team_id=team1,opponent_team_id=team2)
     df = teamDash.get_data_frames()[0]
     df = df[constant.OPPCOLUMN]
+    df = multiplyColumns(df, constant.PCT_COL, 100)
     return df
 
+def multiplyColumns(df, cols, num):
+    df[cols] = round(df[cols] * num, 2)
+    return df
 
 # team1 = getTeamInfo('Miami')
 # team2 = getTeamInfo('New-York')
