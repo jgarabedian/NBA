@@ -12,6 +12,14 @@
                 {% endfor %}
                 
             {% endfor %}
+            <h3>OVERALL STATS</h3>
+             {% for col in oneOverall.columns %}
+                {% if col != 'GROUP_SET' %}
+                    {% for key, value in oneOverall.iterrows() %}
+                        <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
         </div>
         <div class="header__right">
             <h3>{{two}}</h3>
@@ -22,7 +30,14 @@
                     {% endfor %}
                 {% endif %}
             {% endfor %}
-            
+            <h3>OVERALL STATS</h3>
+            {% for col in twoOverall.columns %}
+                {% if col != 'GROUP_SET' %}
+                    {% for key, value in twoOverall.iterrows() %}
+                        <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
     <div class="one">

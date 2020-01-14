@@ -32,4 +32,8 @@ def matchup(matchup):
     twoName = two['full_name']
     oneStats = teamDetails.getTeamByOpponent(str(one['id']), str(two['id']))
     twoStats = teamDetails.getTeamByOpponent(str(two['id']), str(one['id']))
-    return render_template('betting/teams.html.j2', one = oneName, two = twoName, oneStats = oneStats, twoStats = twoStats, PCT_COL = constant.PCT_COL, title = 'Matchup')
+    oneOverall = teamDetails.getTeamStats(str(one['id']))
+    twoOverall = teamDetails.getTeamStats(str(two['id']))
+    return render_template('betting/teams.html.j2', one = oneName, two = twoName, 
+        oneStats = oneStats, twoStats = twoStats, PCT_COL = constant.PCT_COL, 
+        oneOverall = oneOverall, twoOverall = twoOverall, title = 'Matchup')
