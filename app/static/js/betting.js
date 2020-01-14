@@ -15,9 +15,10 @@ function isolateMatchups() {
         a = createElement('a')
         a.innerText = matchTeams
         addClass(a, 'matchup__teams')
-        a.href = matchTeams.replace(' vs ', '_').replace(' ', '-');
+        var matchup = matchTeams.replace(' vs ', '_').replace(' ', '-')
+        a.href = matchup;
         appendElement(match, a)
-        
+        changeId(match.parentElement.parentElement, matchup);
     }
 }
 
@@ -36,7 +37,10 @@ function addClass(el, className) {
     el.className = className;
     return el;
 }
-
+function changeId(el, id) {
+    el.id = id;
+    return el;
+}
 window.onload = function () {
     this.isolateMatchups();
 }

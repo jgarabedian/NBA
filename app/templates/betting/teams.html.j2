@@ -7,12 +7,8 @@
         <div class="header__left">
             <h3>{{one}}</h3>
             {% for col in oneStats.columns %}
-                {# <p>Games Played: {{key}}: {{value['GP']}}</p>
-                <p>Wins: {{value['W']}}</p> #}
                 {% for key, value in oneStats.iterrows() %}
-                    <p>{{col}}:: {{value[col]}}
-                        {% if col in PCT_COL %}%{% endif %}
-                    </p>
+                    <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
                 {% endfor %}
                 
             {% endfor %}
@@ -21,9 +17,8 @@
             <h3>{{two}}</h3>
             {% for col in twoStats.columns %}
                 {% if col != 'GROUP_SET' %}
-                
                     {% for key, value in twoStats.iterrows() %}
-                        <p>{{col}}:: {{value[col]}} {% if col in PCT_COL %}%{% endif %}</p>
+                        <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
                     {% endfor %}
                 {% endif %}
             {% endfor %}

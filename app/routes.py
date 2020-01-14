@@ -21,12 +21,6 @@ def betting():
     title = 'Betting'
     return render_template('betting/betting.html.j2',
         matchups=matchupList, odds=oddsList, companies=companyList, title=title)
-    
-# @app.route('/teams')
-# def teams():
-#     title = 'Teams'
-#     teamList = teamSelection.getTeams()
-#     return render_template('teams/teamSelection.html.j2', teams = teamList)
 
 @app.route('/<matchup>')
 def matchup(matchup):
