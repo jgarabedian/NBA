@@ -6,15 +6,30 @@
     <div class="header">
         <div class="header__left">
             <h3>{{one}}</h3>
+            {% for col in oneStats.columns %}
+                {# <p>Games Played: {{key}}: {{value['GP']}}</p>
+                <p>Wins: {{value['W']}}</p> #}
+                {% for key, value in oneStats.iterrows() %}
+                    <p>{{col}}:: {{value[col]}}</p>
+                {% endfor %}
+                
+            {% endfor %}
         </div>
         <div class="header__right">
             <h3>{{two}}</h3>
+            {% for col in twoStats.columns %}
+                {% if col != 'GROUP_SET' %}
+                
+                    {% for key, value in twoStats.iterrows() %}
+                        <p>{{col}}:: {{value[col]}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+            
         </div>
     </div>
     <div class="one">
-    {% for key,value in oneStats.iterrows() %}
-        <p>{{key}} -- {{value}}</p><br>
-    {% endfor %}
+    
     </div>
 
 {% endblock container %}

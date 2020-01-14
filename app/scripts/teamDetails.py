@@ -1,3 +1,4 @@
+from . import constant
 def getTeamInfo(team):
     from nba_api.stats.endpoints import teaminfocommon
     from nba_api.stats.static import teams
@@ -8,4 +9,15 @@ def getTeamInfo(team):
 def getTeamByOpponent(team1, team2):
     from nba_api.stats.endpoints import teamdashboardbyopponent
     teamDash = teamdashboardbyopponent.TeamDashboardByOpponent(team_id=team1,opponent_team_id=team2)
-    return teamDash.get_data_frames()[0]
+    df = teamDash.get_data_frames()[0]
+    df = df[constant.OPPCOLUMN]
+    return df
+
+
+# team1 = getTeamInfo('Miami')
+# team2 = getTeamInfo('New-York')
+# teamDash = getTeamByOpponent(team1['id'], team2['id'])
+# teamDash2 = getTeamByOpponent(team2['id'], team1['id'])
+# print(teamDash)
+# print(teamDash2)
+# print(teamDash.iterrows())
