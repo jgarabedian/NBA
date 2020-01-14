@@ -5,7 +5,8 @@
 {% block container %}
     <div class="header">
         <div class="header__left">
-            <h3>{{one}}</h3>
+            <h2>{{one}}</h2>
+            <h3>Stats against {{two}}</h3>
             {% for col in oneStats.columns %}
                 {% for key, value in oneStats.iterrows() %}
                     <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
@@ -22,7 +23,8 @@
             {% endfor %}
         </div>
         <div class="header__right">
-            <h3>{{two}}</h3>
+            <h2>{{two}}</h2>
+            <h3>Stats against {{one}}</h3>
             {% for col in twoStats.columns %}
                 {% if col != 'GROUP_SET' %}
                     {% for key, value in twoStats.iterrows() %}
