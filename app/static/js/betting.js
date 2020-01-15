@@ -19,9 +19,6 @@ function isolateMatchups() {
         a.href = matchup;
         appendElement(match, a)
         changeId(match.parentElement.parentElement, matchup);
-        // match.parentElement.parentElement.addEventListener('click', function() {
-        //     focusMatchups(matchup);
-        // })
     }
 }
 
@@ -30,7 +27,7 @@ function focusMatchups(matchup) {
     divs = document.getElementsByClassName('betting__matchup')
     for (i = 0; i < divs.length; i++) {
         if (divs[i].id !== matchup) {
-            divs[i].style.display = 'none'
+            $(divs[i]).fadeOut(1000)
         }
     }
 }
