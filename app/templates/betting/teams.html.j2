@@ -8,6 +8,7 @@
 {% block stats %}
     <div class="header">
         <div class="header__left">
+            <img src="static/images/logos/{{one}}.png" height="200" width="200">
             <h2>{{one}}</h2>
             <h3>Stats against {{two}}</h3>
             {% for col in oneStats.columns %}
@@ -23,6 +24,7 @@
             {% endfor %}
         </div>
         <div class="header__right">
+        <img src="static/images/logos/{{two}}.png" height="200" width="200">
             <h2>{{two}}</h2>
             <h3>Stats against {{one}}</h3>
             {% for col in twoStats.columns %}
