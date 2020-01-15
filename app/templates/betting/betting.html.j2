@@ -19,6 +19,22 @@
         </div>
     </div>
     {%endfor%}
+    <div class="stats">
+        {% block stats %}
+        {% endblock %}
+    </div>
 </div>
 <script src="{{ url_for('static', filename='js/betting.js')}}"></script>
+{% if renderStats != None %}
+        <script>window.onload = function () {
+            setTimeout(function() {
+                this.isolateMatchups();
+                this.focusMatchups({{urlMatch}});
+            }, 2000);
+        }</script>
+    {% else %}
+        <script>window.onload = function () {
+            this.isolateMatchups();
+        }</script>
+    {% endif %}
 {% endblock container %}

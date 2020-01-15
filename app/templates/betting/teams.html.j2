@@ -1,8 +1,11 @@
-{% extends "base.html.j2" %}
+
+
 {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/betting.css.jinja') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/teams.css') }}">
 {% endblock head %}
-{% block container %}
+{% extends "betting/betting.html.j2" %}
+{% block stats %}
     <div class="header">
         <div class="header__left">
             <h2>{{one}}</h2>
@@ -11,39 +14,29 @@
                 {% for key, value in oneStats.iterrows() %}
                     <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
                 {% endfor %}
-                
             {% endfor %}
             <h3>OVERALL STATS</h3>
              {% for col in oneOverall.columns %}
-                {% if col != 'GROUP_SET' %}
-                    {% for key, value in oneOverall.iterrows() %}
-                        <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
-                    {% endfor %}
-                {% endif %}
+                {% for key, value in oneOverall.iterrows() %}
+                    <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
+                {% endfor %}
             {% endfor %}
         </div>
         <div class="header__right">
             <h2>{{two}}</h2>
             <h3>Stats against {{one}}</h3>
             {% for col in twoStats.columns %}
-                {% if col != 'GROUP_SET' %}
-                    {% for key, value in twoStats.iterrows() %}
-                        <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
-                    {% endfor %}
-                {% endif %}
+                {% for key, value in twoStats.iterrows() %}
+                    <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
+                {% endfor %}
             {% endfor %}
             <h3>OVERALL STATS</h3>
             {% for col in twoOverall.columns %}
-                {% if col != 'GROUP_SET' %}
-                    {% for key, value in twoOverall.iterrows() %}
-                        <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
-                    {% endfor %}
-                {% endif %}
+                {% for key, value in twoOverall.iterrows() %}
+                    <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
+                {% endfor %}
             {% endfor %}
         </div>
     </div>
-    <div class="one">
     
-    </div>
-
-{% endblock container %}
+{% endblock stats %}

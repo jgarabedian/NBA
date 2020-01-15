@@ -19,6 +19,19 @@ function isolateMatchups() {
         a.href = matchup;
         appendElement(match, a)
         changeId(match.parentElement.parentElement, matchup);
+        // match.parentElement.parentElement.addEventListener('click', function() {
+        //     focusMatchups(matchup);
+        // })
+    }
+}
+
+function focusMatchups(matchup) {
+    matchup = matchup.id;
+    divs = document.getElementsByClassName('betting__matchup')
+    for (i = 0; i < divs.length; i++) {
+        if (divs[i].id !== matchup) {
+            divs[i].style.display = 'none'
+        }
     }
 }
 
@@ -41,6 +54,4 @@ function changeId(el, id) {
     el.id = id;
     return el;
 }
-window.onload = function () {
-    this.isolateMatchups();
-}
+
