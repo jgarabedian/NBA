@@ -39,6 +39,6 @@ def matchup(matchup):
     oneOverall = teamDetails.getTeamStats(str(one['id']))
     twoOverall = teamDetails.getTeamStats(str(two['id']))
     return render_template('betting/teams.html.j2', one = oneName, two = twoName, 
-        oneStats = oneStats, twoStats = twoStats, PCT_COL = constant.PCT_COL, 
+        oneStats = oneStats, twoStats = twoStats, PCT_COL = constant.PCT_COL, INVERSE_COL = constant.INVERSE_COL,
         oneOverall = oneOverall, twoOverall = twoOverall, matchups=matchupList, odds=oddsList, 
         companies=companyList, renderStats = True, urlMatch = urlMatch, title = 'Matchup')
