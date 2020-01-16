@@ -7,3 +7,11 @@
     text-align: center;
     float: left;
 }
+
+.span__stats__W, .stats__cat__win {
+    color: gold;
+}
+
+.span__stats__L {
+    color: red;
+}

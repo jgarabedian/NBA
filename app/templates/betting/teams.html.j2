@@ -11,15 +11,40 @@
             <img src="static/images/logos/{{one}}.png" height="200" width="200">
             <h2>{{one}}</h2>
             <h3>Stats against {{two}}</h3>
+            <div class="stats__win-loss">
+                <p>
+                    {{oneStats['W'][0]}} <span class="span__stats__W">W</span> 
+                    - {{oneStats['L'][0]}} <span class="span__stats__L">L</span>
+                </p>
+            </div>
             {% for col in oneStats.columns %}
                 {% for key, value in oneStats.iterrows() %}
-                    <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
+                    <p class="
+                        {% if oneStats[col][0] > twoStats[col][0] %}
+                            stats__cat__win
+                        {% else %}
+                            stats__cat__lose
+                        {% endif %}">
+                        
+                        {% if oneStats[col][0] > twoStats[col][0] %}
+                            <i class="fas fa-star"></i>
+                        {% endif %}
+                        {{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
                 {% endfor %}
             {% endfor %}
             <h3>OVERALL STATS</h3>
              {% for col in oneOverall.columns %}
                 {% for key, value in oneOverall.iterrows() %}
-                    <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
+                    <p class="
+                        {% if oneStats[col][0] > twoStats[col][0] %}
+                            stats__cat__win
+                        {% else %}
+                            stats__cat__lose
+                        {% endif %}">
+                        {% if oneStats[col][0] > twoStats[col][0] %}
+                            <i class="fas fa-star"></i>
+                        {% endif %}
+                        {{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
                 {% endfor %}
             {% endfor %}
         </div>
@@ -27,15 +52,43 @@
         <img src="static/images/logos/{{two}}.png" height="200" width="200">
             <h2>{{two}}</h2>
             <h3>Stats against {{one}}</h3>
+                    {% if twoStats['W'][0] > oneStats['W'][0] %}
+                        <i class="fas fa-star"></i>
+                    {% endif %}
+                    {{twoStats['W'][0]}} <span class="span__stats__W">W</span> 
+                    - {{twoStats['L'][0]}} <span class="span__stats__L">L</span>
+                </p>
             {% for col in twoStats.columns %}
                 {% for key, value in twoStats.iterrows() %}
-                    <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
+                    <p class="
+                        {% if twoStats[col][0] > oneStats[col][0] %}
+                            stats__cat__win
+                        {% else %}
+                            stats__cat__lose
+                        {% endif %}">
+                        {% if twoStats[col][0] > oneStats[col][0] %}
+                            <i class="fas fa-star"></i>
+                        {% endif %}
+                        {{col | replace("_", " ")}}:: {{value[col]}}
+                        {% if col in PCT_COL %}%{% endif %}
+                    </p>
                 {% endfor %}
             {% endfor %}
             <h3>OVERALL STATS</h3>
             {% for col in twoOverall.columns %}
                 {% for key, value in twoOverall.iterrows() %}
-                    <p>{{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
+                    <p class="
+                        {% if twoStats[col][0] > oneStats[col][0] %}
+                            stats__cat__win
+                        {% else %}
+                            stats__cat__lose
+                        {% endif %}">
+                        {% if twoStats[col][0] > oneStats[col][0] %}
+                            <i class="fas fa-star"></i>
+                        {% endif %}
+                        {{col | replace("_", " ")}}:: {{value[col]}}
+                        {% if col in PCT_COL %}%{% endif %}
+                    </p>
                 {% endfor %}
             {% endfor %}
         </div>
