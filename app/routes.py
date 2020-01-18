@@ -20,4 +20,25 @@ def betting():
     companyList = spreads.getCompanies()
     title = 'Betting'
     return render_template('betting/betting.html.j2',
-        matchups = matchupList, odds = oddsList, companies = companyList, title = title)
+        matchups=matchupList, odds=oddsList, companies=companyList, renderStats = None, title=title)
+
+@app.route('/<matchup>')
+def matchup(matchup):
+    urlMatch = str(matchup)
+    matchupList = matchups.getMatchups()
+    oddsList = spreads.getSpreads()
+    companyList = spreads.getCompanies()
+    one = teamSelection.getTeamOne(matchup)
+    two = teamSelection.getTeamTwo(matchup)
+    one = teamDetails.getTeamInfo(one)
+    two = teamDetails.getTeamInfo(two)
+    oneName = one['full_name']
+    twoName = two['full_name']
+    oneStats = teamDetails.getTeamByOpponent(str(one['id']), str(two['id']))
+    twoStats = teamDetails.getTeamByOpponent(str(two['id']), str(one['id']))
+    oneOverall = teamDetails.getTeamStats(str(one['id']))
+    twoOverall = teamDetails.getTeamStats(str(two['id']))
+    return render_template('betting/teams.html.j2', one = oneName, two = twoName, 
+        oneStats = oneStats, twoStats = twoStats, PCT_COL = constant.PCT_COL, INVERSE_COL = constant.INVERSE_COL,
+        oneOverall = oneOverall, twoOverall = twoOverall, matchups=matchupList, odds=oddsList, 
+        companies=companyList, renderStats = True, urlMatch = urlMatch, title = 'Matchup')

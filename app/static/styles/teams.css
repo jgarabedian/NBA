@@ -1,0 +1,29 @@
+.header {
+    width: 100%;
+    display: inline-block;
+}
+.header__left, .header__right {
+    width: 50%;
+    text-align: center;
+    float: left;
+}
+
+.stats {
+    display: inline-block;
+    width: 100%;
+}
+
+.stats__left, .stats__right {
+    display: block;
+    width: 50%;
+    text-align: center;
+    float: left;
+}
+
+.span__stats__W, .stats__cat__win {
+    color: gold;
+}
+
+.span__stats__L {
+    color: red;
+}
