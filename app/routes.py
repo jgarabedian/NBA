@@ -1,6 +1,7 @@
 from flask import render_template, request
 from app import app
 from app.scripts import *
+import time
 
 
 @app.route('/')
@@ -24,11 +25,11 @@ def betting():
     return render_template('betting/betting.html.j2',
         matchups=data.matchups, odds=data.spreads, companies=data.companies, urlMatch = rule, renderStats = None, title=title)
 
+
 @app.route('/<teams>', methods=['POST'])
 def teams(teams):
+    start = time.time()
     urlMatch = str(teams)
-    bettingHTML = render_template('betting/betting.html.j2', 
-    matchups=data.matchups, odds=data.spreads, urlMatch = urlMatch, companies=data.companies)
     one = teamSelection.getTeamOne(teams)
     two = teamSelection.getTeamTwo(teams)
     one = teamDetails.getTeamInfo(one)
@@ -39,7 +40,11 @@ def teams(teams):
     twoStats = teamDetails.getTeamByOpponent(str(two['id']), str(one['id']))
     oneOverall = teamDetails.getTeamStats(str(one['id']))
     twoOverall = teamDetails.getTeamStats(str(two['id']))
-    return render_template('betting/teams.html.j2', one = oneName, two = twoName, 
+    runTime = time.time() - start
+    print(runTime)
+    return render_template('betting/betting.html.j2', 
+        matchups=data.matchups, odds=data.spreads, companies=data.companies, 
+        one = oneName, two = twoName, 
         oneStats = oneStats, twoStats = twoStats, PCT_COL = constant.PCT_COL, INVERSE_COL = constant.INVERSE_COL,
-        oneOverall = oneOverall, twoOverall = twoOverall, bettingHTML = bettingHTML, 
+        oneOverall = oneOverall, twoOverall = twoOverall, 
         renderStats = True, urlMatch = urlMatch)
