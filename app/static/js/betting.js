@@ -23,7 +23,6 @@ function isolateMatchups() {
 }
 
 function focusMatchups(matchup) {
-    matchup = matchup.id;
     divs = document.getElementsByClassName('betting__matchup')
     for (i = 0; i < divs.length; i++) {
         if (divs[i].id !== matchup) {

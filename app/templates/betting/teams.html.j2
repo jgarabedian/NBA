@@ -4,9 +4,10 @@
     {# <link rel="stylesheet" href="{{ url_for('static', filename='styles/betting.css.jinja') }}"> #}
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/teams.css') }}">
 {% endblock head %}
-{% extends "betting/betting.html.j2" %}
+{# {% extends "betting/betting.html.j2" %} #}
 {% block betting %}
-    {{ super() }}
+    {# {{ super() }} #}
+    {{ bettingHTML | safe}}
 
 {# {% block stats %} #}
 

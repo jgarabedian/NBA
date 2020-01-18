@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request
 from app import app
 from app.scripts import *
 
@@ -15,16 +15,20 @@ def index():
 
 @app.route('/betting')
 def betting():
-    matchupList = matchups.getMatchups()
-    oddsList = spreads.getSpreads()
-    companyList = spreads.getCompanies()
+    rule = request.path
+    if rule == '/betting':
+        data.matchups = matchups.getMatchups()
+        data.spreads = spreads.getSpreads()
+        data.companies = spreads.getCompanies()
     title = 'Betting'
     return render_template('betting/betting.html.j2',
-        matchups=matchupList, odds=oddsList, companies=companyList, renderStats = None, title=title)
+        matchups=data.matchups, odds=data.spreads, companies=data.companies, urlMatch = rule, renderStats = None, title=title)
 
 @app.route('/<teams>', methods=['POST'])
 def teams(teams):
     urlMatch = str(teams)
+    bettingHTML = render_template('betting/betting.html.j2', 
+    matchups=data.matchups, odds=data.spreads, urlMatch = urlMatch, companies=data.companies)
     one = teamSelection.getTeamOne(teams)
     two = teamSelection.getTeamTwo(teams)
     one = teamDetails.getTeamInfo(one)
@@ -37,5 +41,5 @@ def teams(teams):
     twoOverall = teamDetails.getTeamStats(str(two['id']))
     return render_template('betting/teams.html.j2', one = oneName, two = twoName, 
         oneStats = oneStats, twoStats = twoStats, PCT_COL = constant.PCT_COL, INVERSE_COL = constant.INVERSE_COL,
-        oneOverall = oneOverall, twoOverall = twoOverall,
-        renderStats = True, urlMatch = urlMatch, )
+        oneOverall = oneOverall, twoOverall = twoOverall, bettingHTML = bettingHTML, 
+        renderStats = True, urlMatch = urlMatch)
