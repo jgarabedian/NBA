@@ -22,14 +22,11 @@ def betting():
     return render_template('betting/betting.html.j2',
         matchups=matchupList, odds=oddsList, companies=companyList, renderStats = None, title=title)
 
-@app.route('/<matchup>')
-def matchup(matchup):
-    urlMatch = str(matchup)
-    matchupList = matchups.getMatchups()
-    oddsList = spreads.getSpreads()
-    companyList = spreads.getCompanies()
-    one = teamSelection.getTeamOne(matchup)
-    two = teamSelection.getTeamTwo(matchup)
+@app.route('/<teams>', methods=['POST'])
+def teams(teams):
+    urlMatch = str(teams)
+    one = teamSelection.getTeamOne(teams)
+    two = teamSelection.getTeamTwo(teams)
     one = teamDetails.getTeamInfo(one)
     two = teamDetails.getTeamInfo(two)
     oneName = one['full_name']
@@ -40,5 +37,5 @@ def matchup(matchup):
     twoOverall = teamDetails.getTeamStats(str(two['id']))
     return render_template('betting/teams.html.j2', one = oneName, two = twoName, 
         oneStats = oneStats, twoStats = twoStats, PCT_COL = constant.PCT_COL, INVERSE_COL = constant.INVERSE_COL,
-        oneOverall = oneOverall, twoOverall = twoOverall, matchups=matchupList, odds=oddsList, 
-        companies=companyList, renderStats = True, urlMatch = urlMatch, title = 'Matchup')
+        oneOverall = oneOverall, twoOverall = twoOverall,
+        renderStats = True, urlMatch = urlMatch, )
