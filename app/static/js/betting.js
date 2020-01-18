@@ -12,12 +12,12 @@ function isolateMatchups() {
         matchItems = match.innerText.split(': ', [3])
         match.innerText = matchItems[0].trim() + ' '
         matchTeams = matchItems[1].trim()
-        a = createElement('a')
-        a.innerText = matchTeams
-        addClass(a, 'matchup__teams')
+        // a = createElement('a')
+        // a.innerText = matchTeams
+        // addClass(a, 'matchup__teams')
         var matchup = matchTeams.replace(' vs ', '_').replace(' ', '-')
-        a.href = matchup;
-        appendElement(match, a)
+        // a.href = matchup;
+        // appendElement(match, a)
         changeId(match.parentElement.parentElement, matchup);
     }
 }

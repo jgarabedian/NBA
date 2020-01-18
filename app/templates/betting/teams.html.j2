@@ -1,11 +1,15 @@
 
 
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/betting.css.jinja') }}">
+    {# <link rel="stylesheet" href="{{ url_for('static', filename='styles/betting.css.jinja') }}"> #}
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/teams.css') }}">
 {% endblock head %}
 {% extends "betting/betting.html.j2" %}
-{% block stats %}
+{% block betting %}
+    {{ super() }}
+
+{# {% block stats %} #}
+
 <div class="header">
     <div class="header__left">
         <img src="static/images/logos/{{one}}.png" height="200" width="200">
@@ -102,5 +106,5 @@
         </div>
     </div>
 </div>
-    
-{% endblock stats %}
+{# {% endblock stats %} #}
+{% endblock betting %}
