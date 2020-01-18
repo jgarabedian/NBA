@@ -36,11 +36,11 @@
         <div class="header">
             <div class="header__left">
                 <img src="static/images/logos/{{one}}.png" height="200" width="200">
-                <h2>{{one}} ({{oneOverall['W'][0]}} - {{oneOverall['L'][0]}})</h2>
+                {# <h2>{{one}} ({{oneOverall['W'][0]}} - {{oneOverall['L'][0]}})</h2> #}
                 <div class="stats">
                     <div class="stats__left">
                         <h3>OVERALL STATS</h3>
-                        {% for col in oneOverall.columns %}
+                        {# {% for col in oneOverall.columns %}
                             {% for key, value in oneOverall.iterrows() %}
                                 <p class="
                                     {% if (oneOverall[col][0] > twoOverall[col][0] and col not in INVERSE_COL) or 
@@ -55,7 +55,7 @@
                                     {% endif %}
                                     {{col | replace("_", " ")}}:: {{value[col]}}{% if col in PCT_COL %}%{% endif %}</p>
                             {% endfor %}
-                        {% endfor %}
+                        {% endfor %} #}
                     </div>
                     <div class="stats__right">
                         <h3>Stats against {{two}}</h3>
@@ -82,7 +82,7 @@
             </div>
             <div class="header__right">
                 <img src="static/images/logos/{{two}}.png" height="200" width="200">
-                <h2>{{two}} ({{twoOverall['W'][0]}} - {{twoOverall['L'][0]}})</h2>
+                {# <h2>{{two}} ({{twoOverall['W'][0]}} - {{twoOverall['L'][0]}})</h2> #}
                 <div class="stats">
                     <div class="stats__left">
                         <h3>Stats against {{one}}</h3>
@@ -107,7 +107,7 @@
                     </div>
                     <div class="stats__right">
                         <h3>OVERALL STATS</h3>
-                        {% for col in twoOverall.columns %}
+                        {# {% for col in twoOverall.columns %}
                             {% for key, value in twoOverall.iterrows() %}
                                 <p class="
                                     {% if (twoOverall[col][0] > oneOverall[col][0] and col not in INVERSE_COL) or 
@@ -124,7 +124,7 @@
                                     {% if col in PCT_COL %}%{% endif %}
                                 </p>
                             {% endfor %}
-                        {% endfor %}
+                        {% endfor %} #}
                     </div>
                 </div>
             </div>

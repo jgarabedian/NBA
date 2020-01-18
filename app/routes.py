@@ -38,13 +38,13 @@ def teams(teams):
     twoName = two['full_name']
     oneStats = teamDetails.getTeamByOpponent(str(one['id']), str(two['id']))
     twoStats = teamDetails.getTeamByOpponent(str(two['id']), str(one['id']))
-    oneOverall = teamDetails.getTeamStats(str(one['id']))
-    twoOverall = teamDetails.getTeamStats(str(two['id']))
+    # oneOverall = teamDetails.getTeamStats(str(one['id']))
+    # twoOverall = teamDetails.getTeamStats(str(two['id']))
     runTime = time.time() - start
     print(runTime)
     return render_template('betting/betting.html.j2', 
         matchups=data.matchups, odds=data.spreads, companies=data.companies, 
         one = oneName, two = twoName, 
         oneStats = oneStats, twoStats = twoStats, PCT_COL = constant.PCT_COL, INVERSE_COL = constant.INVERSE_COL,
-        oneOverall = oneOverall, twoOverall = twoOverall, 
+        # oneOverall = oneOverall, twoOverall = twoOverall, 
         renderStats = True, urlMatch = urlMatch)
