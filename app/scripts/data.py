@@ -1,0 +1,3 @@
+companies = []
+spreads = []
+matchups = []

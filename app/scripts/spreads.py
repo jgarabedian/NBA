@@ -61,5 +61,4 @@ def getCompanies():
         imageAlt = image['alt']
         if imageAlt not in companies and imageAlt != '':
             companies.append(imageAlt)
-    print(str(len(companies)))
     return companies

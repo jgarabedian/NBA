@@ -24,9 +24,9 @@
     </div>
     {%endfor%}
     <div class="stats__container">
-        {% block stats %}
+        {# {% block stats %} #}
             
-        {% endblock %}
+        {# {% endblock %} #}
     </div>
 </div>
 {% endblock betting %}
@@ -34,7 +34,7 @@
 {% if renderStats != None %}
         <script>window.onload = function () {
             setTimeout(function() {
-                console.log('dont isolate matchups')
+                console.log('isolate matchups and render stats')
                 this.focusMatchups("{{urlMatch}}");
             }, 2000);
         }</script>
