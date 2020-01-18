@@ -2,7 +2,7 @@ from . import constant
 def getTeamInfo(team):
     from nba_api.stats.endpoints import teaminfocommon
     from nba_api.stats.static import teams
-    team = team.replace('-', ' ')
+    team = team.replace('-', ' ').replace('LA', '').strip()
     teamInfo= teams.find_teams_by_full_name(team)[0]
     return teamInfo
 
@@ -36,3 +36,15 @@ def multiplyColumns(df, cols, num):
 # print(teamDash)
 # print(teamDash2)
 # print(teamDash.iterrows())
+
+# teams = 'LA-Clippers_New-Orleans'
+# one = 'LA-Clippers'
+# two = 'New-Orleans'
+# one = getTeamInfo(one)
+# two = getTeamInfo(two)
+# from nba_api.stats.endpoints import teaminfocommon
+# from nba_api.stats.static import teams
+# one = one.replace('-', ' ').replace('LA', '').strip()
+# teamInfo= teams.find_teams_by_full_name(one)[0]
+# print(teamInfo)
+# print(two)
