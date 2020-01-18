@@ -25,7 +25,7 @@ def betting():
     return render_template('betting/betting.html.j2',
         matchups=data.matchups, odds=data.spreads, companies=data.companies, urlMatch = rule, renderStats = None, title=title)
 
-
+# TODO: Add celery tasks to reduce timeouts
 @app.route('/<teams>', methods=['POST'])
 def teams(teams):
     start = time.time()
