@@ -38,6 +38,7 @@
                 <img src="static/images/logos/{{one}}.png" height="200" width="200">
                 {# <h2>{{one}} ({{oneOverall['W'][0]}} - {{oneOverall['L'][0]}})</h2> #}
                 <div class="stats">
+                    {% if dataFound %}
                     <div class="stats__left">
                         <h3>OVERALL STATS</h3>
                         {# {% for col in oneOverall.columns %}
@@ -78,12 +79,16 @@
                             {% endfor %}
                         {% endfor %}         
                     </div>
+                    {% elif dataFound == False %}
+                    <h5>Data took too long to retrieve</h5>
+                    {% endif %}
                 </div>
             </div>
             <div class="header__right">
                 <img src="static/images/logos/{{two}}.png" height="200" width="200">
                 {# <h2>{{two}} ({{twoOverall['W'][0]}} - {{twoOverall['L'][0]}})</h2> #}
                 <div class="stats">
+                    {% if dataFound %}
                     <div class="stats__left">
                         <h3>Stats against {{one}}</h3>
                         {% for col in twoStats.columns %}
@@ -125,7 +130,10 @@
                                 </p>
                             {% endfor %}
                         {% endfor %} #}
-                    </div>
+                    </div>             
+                    {% elif dataFound == False %}
+                    <h5>Data took too long</h5>
+                    {% endif %}
                 </div>
             </div>
         </div>
