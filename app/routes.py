@@ -60,7 +60,7 @@ def teams(teams):
         dataFound = False
         print('Lost at twoStats')
     else:
-        sleep(2)
+        sleep(5)
         twoStats = teamDetails.getTeamByOpponent(str(two['id']), str(one['id']))
     print('After two stats dataFround is ' + str(dataFound))
     if str(twoStats) == 'timeout' or dataFound == False:
