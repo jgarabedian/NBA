@@ -1,0 +1,48 @@
+{% extends "base.html.j2" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='js/home.js') }}">
+{% endblock head %}
+{% block container %}
+    <div class="home">
+        <a href="/players">
+            <div class="page" id="players">
+                <div class="page__title">
+                    <h1>Player Comparison</h1>
+                    <h3>
+                        This section allows you to compare stats between 2 players for the 2019-2020 season
+                    </h3>
+                </div>
+                <div class="page__description">
+                    <p>
+                        Using an API from Rapid API (https://rapidapi.com/theapiguy/api/free-nba) here to query 
+                        all available players based on a user search, selecting them to get all of stats found using 
+                        balldontlie (https://www.balldontlie.io/) API. After getting the stats using Javascript 
+                        fetch and return the stats in json format. From there, I utilized the open source echarts 
+                        library to visualize the stats side by side.
+                    </p>
+                </div>
+            </div>
+        </a>
+        <a href="/betting">
+            <div class="page" id="betting">
+                <div class="page__title">
+                    <h1>Betting Lines</h1>
+                    <h3>
+                        This section allows you to see the spreads of upcoming NBA games from multiple companies
+                    </h3>
+                </div>
+                <div class="page__description">
+                    <p>
+                        Using an API found (https://rapidapi.com/theapiguy/api/free-nba) to query 
+                        all available players based on a user search, selecting them to get all of stats found in 
+                        this API. After getting the stats using Javascript 
+                        fetch and return the stats in json format. From there, I utilized the open source echarts 
+                        library to visualize the stats side by side.
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+{% endblock container %}

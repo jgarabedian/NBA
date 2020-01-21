@@ -7,7 +7,7 @@ import time
 @app.route('/')
 def Home():
     title = 'Home'
-    return render_template('index.html.j2', title = title)
+    return render_template('home.html', title = title)
 
 @app.route('/players')
 def index():
