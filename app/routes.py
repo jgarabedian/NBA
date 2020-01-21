@@ -2,6 +2,7 @@ from flask import render_template, request
 from app import app
 from app.scripts import *
 import time
+from time import sleep
 
 
 @app.route('/')
@@ -58,7 +59,8 @@ def teams(teams):
         twoStats = False
         dataFound = False
         print('Lost at twoStats')
-    else: 
+    else:
+        sleep(2)
         twoStats = teamDetails.getTeamByOpponent(str(two['id']), str(one['id']))
     print('After two stats dataFround is ' + str(dataFound))
     if str(twoStats) == 'timeout' or dataFound == False:
