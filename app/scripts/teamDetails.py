@@ -19,7 +19,7 @@ def getTeamByOpponent(team1, team2):
     from nba_api.stats.endpoints import teamdashboardbyopponent
     with timeout:
         try:
-            teamDash = teamdashboardbyopponent.TeamDashboardByOpponent(team_id=team1,opponent_team_id=team2, timeout=1)
+            teamDash = teamdashboardbyopponent.TeamDashboardByOpponent(team_id=team1,opponent_team_id=team2, timeout=10)
             # eventlet.sleep(5)
             df = teamDash.get_data_frames()[0]
             df = df[constant.OPPCOLUMN]
