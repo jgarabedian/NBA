@@ -59,7 +59,7 @@ pytest==4.6.8
 pytest-cov==2.8.1
 python-dateutil==2.8.1
 pytz==2019.3
-pyxdg==0.25
+pyxdg==0.26
 redis==3.3.11
 requests==2.22.0
 scandir==1.10.0
