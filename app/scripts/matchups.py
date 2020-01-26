@@ -39,7 +39,7 @@ def getMatchups():
 
         # matchVs = str(matchDate) + ' ' + str(matchTime) + ': ' + str(matchTop) + ' vs ' + str(matchBottom)
         matchVs = str(matchTime) + ': ' + str(matchTop) + ' vs ' + str(matchBottom)
-        print(matchVs)
+        # print(matchVs)
 
         if matchVs not in matchTeamList:
             matchTeamList.append(matchVs)
