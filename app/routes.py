@@ -30,39 +30,24 @@ def betting():
 @app.route('/<teams>', methods=['POST'])
 def teams(teams):
     start = time.time()
+    dataFound = True
     urlMatch = str(teams)
     one = teamSelection.getTeamOne(teams)
     two = teamSelection.getTeamTwo(teams)
     one = teamDetails.getTeamInfo(one)
-    dataFound = True
-    if str(one) == 'timeout':
-        dataFound = False
-        print('Lost at one')
-    else:
-        two = teamDetails.getTeamInfo(two)
-    if dataFound == False or str(two) == 'timeout':
-        oneName = 'Team Not Found'
-        twoName = 'Team2 Not Found'
-        dataFound = False
-        print('Lost at two')
-    else:
-        oneName = one['full_name']
-        twoName = two['full_name']
-    print('After names dataFround is ' + str(dataFound))
-    if dataFound == True:
-        oneStats = teamDetails.getTeamByOpponent(str(one['id']), str(two['id']))
-    else:
-        oneStats = False
-        print('Lost at oneStats')
-    print('After one stats dataFround is ' + str(dataFound))
-    if dataFound == False or str(oneStats) == 'timeout':
+    two = teamDetails.getTeamInfo(two)
+    oneName = one['full_name']
+    twoName = two['full_name']
+    print(str(one['id']))
+    print(str(two['id']))
+    oneStats = teamDetails.getTeamByOpponent(str(one['id']), str(two['id']))
+    if str(oneStats) == 'timeout':
         twoStats = False
         dataFound = False
-        print('Lost at twoStats')
+        print('Lost at oneStats')
     else:
-        sleep(5)
+        sleep(10)
         twoStats = teamDetails.getTeamByOpponent(str(two['id']), str(one['id']))
-    print('After two stats dataFround is ' + str(dataFound))
     if str(twoStats) == 'timeout' or dataFound == False:
         dataFound = False
         print('Lost at two stats')
