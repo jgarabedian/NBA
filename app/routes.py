@@ -41,7 +41,6 @@ def teams(teams):
     print(str(one['id']))
     print(str(two['id']))
     oneStats = teamDetails.getTeamByOpponent(str(one['id']), str(two['id']))
-    # print('team1 id is ' + str(one['id']))
     if str(oneStats) == 'timeout':
         twoStats = False
         dataFound = False

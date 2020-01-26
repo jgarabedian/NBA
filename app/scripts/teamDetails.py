@@ -15,7 +15,6 @@ def getTeamInfo(team):
     return teamInfo
 
 def getTeamByOpponent(team1, team2):
-    # start = time.time()
     from nba_api.stats.endpoints import teamdashboardbyopponent
     with timeout:
         try:
@@ -24,16 +23,11 @@ def getTeamByOpponent(team1, team2):
             df = teamDash.get_data_frames()[0]
             df = df[constant.OPPCOLUMN]
             df = multiplyColumns(df, constant.PCT_COL, 100)
-            print('finished the try')
         except:
             timeout.cancel()
             df = 'timeout'
-            print('got exception')
         finally:
             timeout.cancel()
-            print('got finally')
-    
-    # print('It took ' + str(runTime) + ' seconds to run getTeamByOpponent')
     return df
 
 def getTeamStats(team):
@@ -45,7 +39,6 @@ def getTeamStats(team):
         df = multiplyColumns(df, constant.PCT_COL, 100)
     except:
         df = 'timeout'
-    print(df)
     return df
 
 def multiplyColumns(df, cols, num):
