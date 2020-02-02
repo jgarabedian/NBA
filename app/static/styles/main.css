@@ -36,12 +36,46 @@ header {
     justify-content: space-between;
 }
 .header-left i, .header-right i {
-    margin: 5px;
-    padding-top: 15px;
+    line-height: 80px;
+    margin-left: 15px
 }
 header a {
     color: white;
     text-decoration: none;
+}
+/* Nav */
+.nav ul {
+    list-style: none;
+    /* padding-right: 40px; */
+    text-align: left;
+    padding-left: 0;
+}
+.nav a {
+    color: white;
+}
+.nav li {
+    padding: 0;
+    opacity: .6;
+    padding-right: 40px;
+}
+.nav li:hover {
+    opacity: 1;
+    background-color: lightgray;
+}
+.nav i {
+    cursor: pointer;
+}
+.nav__header {
+    display: inline-flex;
+    margin-left: 15px;
+}
+.nav__menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    background-color: slategray;
+    z-index: 99;
 }
 /* Search Container */
 .container__search {

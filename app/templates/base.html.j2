@@ -24,9 +24,10 @@
     <div id="main" class="alt">
         <header>
             <div class="header-left">
-                <a href="/">
+                {# <a href="/">
                 <i class="fa fa-home fa-3x" aria-hidden="true"></i>
-                </a>
+                </a> #}
+                {% include "nav.html" %}
             </div>
             <div class="header-middle">
                 <a href="/">
@@ -44,5 +45,6 @@
     </div>
 
 </body>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
 
 </html>
