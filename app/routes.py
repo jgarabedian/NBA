@@ -38,15 +38,13 @@ def teams(teams):
     two = teamDetails.getTeamInfo(two)
     oneName = one['full_name']
     twoName = two['full_name']
-    print(str(one['id']))
-    print(str(two['id']))
     oneStats = teamDetails.getTeamByOpponent(str(one['id']), str(two['id']))
     if str(oneStats) == 'timeout':
         twoStats = False
         dataFound = False
         print('Lost at oneStats')
     else:
-        sleep(10)
+        sleep(15)
         twoStats = teamDetails.getTeamByOpponent(str(two['id']), str(one['id']))
     if str(twoStats) == 'timeout' or dataFound == False:
         dataFound = False
