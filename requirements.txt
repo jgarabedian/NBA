@@ -41,7 +41,7 @@ mccabe==0.6.1
 monotonic==1.5
 more-itertools==5.0.0
 nba-api==1.1.8
-numpy==1.18.1
+numpy==1.22.0
 packaging==19.2
 pandas==0.25.3
 parsy==1.1.0
